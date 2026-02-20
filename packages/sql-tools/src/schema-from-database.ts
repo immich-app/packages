@@ -4,17 +4,17 @@ import { ReaderContext } from 'src/contexts/reader-context';
 import { readers } from 'src/readers';
 import { DatabaseLike, DatabaseSchema, PostgresDB, SchemaFromDatabaseOptions } from 'src/types';
 
-const isKysely = (db: DatabaseLike): db is Kysely<unknown> => db instanceof Kysely;
+const isKysely = <T>(db: DatabaseLike<T>): db is Kysely<T> => db instanceof Kysely;
 
 /**
  * Load schema from a database url
  */
-export const schemaFromDatabase = async (
-  database: DatabaseLike,
+export const schemaFromDatabase = async <T>(
+  database: DatabaseLike<T>,
   options: SchemaFromDatabaseOptions = {},
 ): Promise<DatabaseSchema> => {
   const db = isKysely(database)
-    ? (database as Kysely<PostgresDB>)
+    ? (database as unknown as Kysely<PostgresDB>)
     : new Kysely<PostgresDB>({ dialect: new PostgresJSDialect({ postgres: database }) });
   const ctx = new ReaderContext(options);
 
