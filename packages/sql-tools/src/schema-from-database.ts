@@ -1,11 +1,8 @@
 import { Kysely } from 'kysely';
 import { PostgresJSDialect } from 'kysely-postgres-js';
-import { Sql } from 'postgres';
 import { ReaderContext } from 'src/contexts/reader-context';
 import { readers } from 'src/readers';
-import { DatabaseSchema, PostgresDB, SchemaFromDatabaseOptions } from 'src/types';
-
-export type DatabaseLike = Sql | Kysely<unknown>;
+import { DatabaseLike, DatabaseSchema, PostgresDB, SchemaFromDatabaseOptions } from 'src/types';
 
 const isKysely = (db: DatabaseLike): db is Kysely<unknown> => db instanceof Kysely;
 

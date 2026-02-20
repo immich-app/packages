@@ -1,4 +1,5 @@
 import { Kysely, ColumnType as KyselyColumnType } from 'kysely';
+import { Sql } from 'postgres';
 import { ProcessorContext } from 'src/contexts/processor-context';
 import { ReaderContext } from 'src/contexts/reader-context';
 import { NamingInterface } from 'src/naming/naming.interface';
@@ -536,3 +537,5 @@ export type Generated<T> =
     ? KyselyColumnType<S, I | undefined, U>
     : KyselyColumnType<T, T | undefined, T>;
 export type Int8 = KyselyColumnType<number>;
+
+export type DatabaseLike = Sql | Kysely<unknown>;
