@@ -8,8 +8,8 @@
   "bump-patch-for-minor-pre-major": false,
   "draft": false,
   "prerelease": false,
-  "changelog-type": "github",
-  "release-type": "simple",
+  "release-type": "node",
+  "initial-version": "0.1.0",
   "packages": {
     "packages/sql-tools": {
       "component": "sql-tools",
