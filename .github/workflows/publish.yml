@@ -1,0 +1,40 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write
+  packages: write
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Setup Mise
+        uses: immich-app/devtools/actions/use-mise@dab18118da6476e8237ac94080fd937983fecd42 # use-mise-action-v1.1.2
+
+      - name: Find package
+        id: find-package
+        env:
+          RELEASE_TAG_NAME: ${{ github.event.release.tag_name }}
+        run: |
+          PACKAGE_NAME="${RELEASE_TAG_NAME%-*}"
+          echo "Package is $PACKAGE_NAME"
+          echo "package_name=$PACKAGE_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Install
+        run: pnpm --filter ./packages/${{ steps.find-package.outputs.package_name }} install
+
+      - name: Build
+        run: pnpm --filter ./packages/${{ steps.find-package.outputs.package_name }} build
+
+      - name: Publish
+        run: pnpm --filter ./packages/${{ steps.find-package.outputs.package_name }} publish --no-git-checks

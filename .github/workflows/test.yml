@@ -1,0 +1,36 @@
+name: Test
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Setup Mise
+        uses: immich-app/devtools/actions/use-mise@dab18118da6476e8237ac94080fd937983fecd42 # use-mise-action-v1.1.2
+
+      - name: Run npm install
+        run: pnpm -r install
+
+      - name: Run linter
+        run: pnpm lint
+        if: ${{ !cancelled() }}
+
+      - name: Run formatter
+        run: pnpm format
+        if: ${{ !cancelled() }}
+
+      - name: Run unit tests
+        run: pnpm test
+        if: ${{ !cancelled() }}
