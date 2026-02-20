@@ -6,3 +6,4 @@ src/lib/assets
 dist/
 CHANGELOG.md
 .svelte-kit/
+.release-please-manifest.json
