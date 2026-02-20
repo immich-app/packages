@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          persist-credentials: false
 
       - name: Setup Mise
         uses: immich-app/devtools/actions/use-mise@dab18118da6476e8237ac94080fd937983fecd42 # use-mise-action-v1.1.2

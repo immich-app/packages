@@ -1,6 +1,7 @@
 {
   "name": "packages",
   "version": "0.0.1",
+  "license": "MIT",
   "description": "A collection of libraries around the Immich project",
   "private": false,
   "type": "module",
@@ -22,9 +23,11 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@sveltejs/eslint-config": "^8.3.4",
+    "@types/node": "^25.3.0",
     "eslint": "^10.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-svelte": "^3.12.5",
+    "eslint-plugin-unicorn": "^63.0.0",
     "globals": "^17.3.0",
     "jiti": "^2.6.1",
     "prettier": "^3.6.2",
@@ -33,6 +36,9 @@
     "svelte": "^5.42.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.0",
+    "vite": "^7.3.1",
+    "vite-plugin-dts": "^4.5.4",
+    "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.0.0"
   }
 }
