@@ -538,4 +538,4 @@ export type Generated<T> =
     : KyselyColumnType<T, T | undefined, T>;
 export type Int8 = KyselyColumnType<number>;
 
-export type DatabaseLike = Sql | Kysely<unknown>;
+export type DatabaseLike<T> = Sql | Kysely<T>;
