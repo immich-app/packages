@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/immich-app/packages/compare/sql-tools-v0.1.2...sql-tools-v0.2.0) (2026-02-20)
+
+
+### Features
+
+* postgres connection ([#12](https://github.com/immich-app/packages/issues/12)) ([dd72fd7](https://github.com/immich-app/packages/commit/dd72fd7703ef0edd80cd8c5a596d76eccc4bcb24))
+
 ## [0.1.2](https://github.com/immich-app/packages/compare/sql-tools-v0.1.1...sql-tools-v0.1.2) (2026-02-20)
 
 
