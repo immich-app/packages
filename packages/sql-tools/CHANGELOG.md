@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/immich-app/packages/compare/sql-tools-v0.1.1...sql-tools-v0.1.2) (2026-02-20)
+
+
+### Bug Fixes
+
+* kysely type ([#10](https://github.com/immich-app/packages/issues/10)) ([2eba666](https://github.com/immich-app/packages/commit/2eba6660d8150aaeb036ec4b3d67c4fc55a3213a))
+
 ## [0.1.1](https://github.com/immich-app/packages/compare/sql-tools-v0.1.0...sql-tools-v0.1.1) (2026-02-20)
 
 
