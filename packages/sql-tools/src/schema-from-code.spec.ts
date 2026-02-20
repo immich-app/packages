@@ -27,7 +27,7 @@ describe(schemaFromCode.name, () => {
   });
 
   describe('test files', () => {
-    const errorStubs = readdirSync('test/sql-tools/errors', { withFileTypes: true });
+    const errorStubs = readdirSync('test/fixtures/errors', { withFileTypes: true });
     for (const file of errorStubs) {
       const filePath = join(file.parentPath, file.name);
       it(filePath, async () => {
@@ -38,7 +38,7 @@ describe(schemaFromCode.name, () => {
       });
     }
 
-    const stubs = readdirSync('test/sql-tools', { withFileTypes: true });
+    const stubs = readdirSync('test/fixtures', { withFileTypes: true });
     for (const file of stubs) {
       if (file.isDirectory()) {
         continue;
