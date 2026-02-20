@@ -1,9 +1,46 @@
 import { Kysely, ColumnType as KyselyColumnType } from 'kysely';
-import { Sql } from 'postgres';
+import { SSLConfig } from 'pg-connection-string';
+import { Notice } from 'postgres';
 import { ProcessorContext } from 'src/contexts/processor-context';
 import { ReaderContext } from 'src/contexts/reader-context';
 import { NamingInterface } from 'src/naming/naming.interface';
 import { RegisterItem } from 'src/register-item';
+
+export type DatabasePostgresOptions = {
+  connection?: DatabaseConnectionParams;
+  maxConnections?: number;
+  timeZone?: string;
+  convertToJsDate?: boolean;
+  convertBigIntToNumber?: boolean;
+  onNotice?: (notice: Notice) => void;
+  onClose?: (connectionId: number) => void;
+};
+
+export type DatabaseConnectionURL = {
+  connectionType: 'url';
+  url: string;
+};
+
+export type DatabaseConnectionParts = {
+  connectionType: 'parts';
+  host: string;
+  port: number;
+  username: string;
+  password: string;
+  database: string;
+  ssl?: DatabaseSslMode;
+};
+
+export enum DatabaseSslMode {
+  Disable = 'disable',
+  Allow = 'allow',
+  Prefer = 'prefer',
+  Require = 'require',
+  VerifyFull = 'verify-full',
+}
+
+export type DatabaseConnectionParams = DatabaseConnectionURL | DatabaseConnectionParts;
+export type PostgresSsl = 'require' | 'allow' | 'prefer' | 'verify-full' | boolean | SSLConfig;
 
 export type BaseContextOptions = {
   databaseName?: string;
@@ -23,7 +60,7 @@ export type SchemaFromCodeOptions = BaseContextOptions & {
   overrides?: boolean;
 };
 
-export type SchemaFromDatabaseOptions = BaseContextOptions;
+export type SchemaFromDatabaseOptions = BaseContextOptions & DatabasePostgresOptions;
 
 export type SchemaDiffToSqlOptions = BaseContextOptions & {
   comments?: boolean;
@@ -537,5 +574,3 @@ export type Generated<T> =
     ? KyselyColumnType<S, I | undefined, U>
     : KyselyColumnType<T, T | undefined, T>;
 export type Int8 = KyselyColumnType<number>;
-
-export type DatabaseLike<T> = Sql | Kysely<T>;

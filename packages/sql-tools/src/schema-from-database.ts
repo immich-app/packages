@@ -1,22 +1,16 @@
 import { Kysely } from 'kysely';
 import { PostgresJSDialect } from 'kysely-postgres-js';
+import { createPostgres } from 'src/connections/postgres-connection';
 import { ReaderContext } from 'src/contexts/reader-context';
 import { readers } from 'src/readers';
-import { DatabaseLike, DatabaseSchema, PostgresDB, SchemaFromDatabaseOptions } from 'src/types';
-
-const isKysely = <T>(db: DatabaseLike<T>): db is Kysely<T> => db instanceof Kysely;
+import { DatabaseSchema, PostgresDB, SchemaFromDatabaseOptions } from 'src/types';
 
 /**
  * Load schema from a database url
  */
-export const schemaFromDatabase = async <T>(
-  database: DatabaseLike<T>,
-  options: SchemaFromDatabaseOptions = {},
-): Promise<DatabaseSchema> => {
-  const db = isKysely(database)
-    ? (database as unknown as Kysely<PostgresDB>)
-    : new Kysely<PostgresDB>({ dialect: new PostgresJSDialect({ postgres: database }) });
+export const schemaFromDatabase = async (options: SchemaFromDatabaseOptions = {}): Promise<DatabaseSchema> => {
   const ctx = new ReaderContext(options);
+  const db = new Kysely<PostgresDB>({ dialect: new PostgresJSDialect({ postgres: createPostgres(options) }) });
 
   try {
     for (const reader of readers) {
@@ -25,9 +19,6 @@ export const schemaFromDatabase = async <T>(
 
     return ctx.build();
   } finally {
-    // only close the connection it we created it
-    if (!isKysely(database)) {
-      await db.destroy();
-    }
+    await db.destroy();
   }
 };

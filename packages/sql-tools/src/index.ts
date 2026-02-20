@@ -1,3 +1,4 @@
+export * from 'src/connections/postgres-connection';
 export * from 'src/decorators/after-delete.decorator';
 export * from 'src/decorators/after-insert.decorator';
 export * from 'src/decorators/before-update.decorator';
