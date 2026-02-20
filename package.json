@@ -1,0 +1,38 @@
+{
+  "name": "packages",
+  "version": "0.0.1",
+  "description": "A collection of libraries around the Immich project",
+  "private": false,
+  "type": "module",
+  "packageManager": "pnpm@10.29.3",
+  "engines": {
+    "pnpm": ">=10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/immich-app/packages.git"
+  },
+  "scripts": {
+    "lint": "eslint --max-warnings 0",
+    "lint:fix": "pnpm lint -- --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "test": "pnpm -r --filter ./packages/* test"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@sveltejs/eslint-config": "^8.3.4",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-svelte": "^3.12.5",
+    "globals": "^17.3.0",
+    "jiti": "^2.6.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-svelte": "^3.4.0",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "svelte": "^5.42.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.0",
+    "vitest": "^4.0.0"
+  }
+}
