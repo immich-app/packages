@@ -25,6 +25,7 @@
   "dependencies": {
     "kysely": "^0.28.11",
     "kysely-postgres-js": "^3.0.0",
+    "pg-connection-string": "^2.11.0",
     "postgres": "^3.4.8"
   }
 }
