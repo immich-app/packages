@@ -17,7 +17,9 @@
     },
     "outDir": "dist",
     "baseUrl": "./",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "rewriteRelativeImportExtensions": true
   },
-  "include": ["src"]
+  "include": ["src", "test"]
 }
