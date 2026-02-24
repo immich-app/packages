@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.js'),
+      entry: ['src/bin/cli.ts', resolve(__dirname, 'src/index.js')],
       name: 'SQL Tools',
       formats: ['es'],
     },
