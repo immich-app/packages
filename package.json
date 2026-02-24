@@ -5,7 +5,7 @@
   "description": "A collection of libraries around the Immich project",
   "private": false,
   "type": "module",
-  "packageManager": "pnpm@10.29.3",
+  "packageManager": "pnpm@10.30.0",
   "engines": {
     "pnpm": ">=10.0.0"
   },
