@@ -15,6 +15,7 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
+      external: [/kysely\/.*/, 'kysely-postgres-js', 'postgres'],
       output: {
         dir: 'dist',
       },
