@@ -23,7 +23,7 @@ export const schema: DatabaseSchema = {
           name: 'column1',
           tableName: 'table1',
           type: 'uuid',
-          default: 'uuid_generate_v4()',
+          default: 'uuidv7()',
           nullable: false,
           isArray: false,
           primary: true,

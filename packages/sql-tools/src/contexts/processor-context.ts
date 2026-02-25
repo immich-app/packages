@@ -3,7 +3,6 @@ import { BaseContext } from 'src/contexts/base-context';
 import { ColumnOptions } from 'src/decorators/column.decorator';
 import { TableOptions } from 'src/decorators/table.decorator';
 import { DatabaseColumn, DatabaseTable, SchemaFromCodeOptions } from 'src/types';
-import { columnVersionMapper } from 'src/version-mapper';
 
 type TableMetadata = { options: TableOptions; object: Function; methodToColumn: Map<string | symbol, DatabaseColumn> };
 
@@ -57,7 +56,7 @@ export class ProcessorContext extends BaseContext {
   addColumn(table: DatabaseTable, column: DatabaseColumn, options: ColumnOptions, propertyName: string | symbol) {
     table.columns.push(column);
     const tableMetadata = this.getTableMetadata(table);
-    tableMetadata.methodToColumn.set(propertyName, columnVersionMapper(this, column));
+    tableMetadata.methodToColumn.set(propertyName, column);
   }
 
   warnMissingTable(context: string, object: object, propertyName?: symbol | string) {

@@ -41,14 +41,14 @@ export enum DatabaseSslMode {
 
 export type DatabaseConnectionParams = DatabaseConnectionURL | DatabaseConnectionParts;
 export type PostgresSsl = 'require' | 'allow' | 'prefer' | 'verify-full' | boolean | SSLConfig;
-export type DatabaseVersion = 'postgres-14' | 'postgres-15' | 'postgres-16' | 'postgres-17' | 'postgres-18';
+export type UuidFunctionFactory = (version?: 4 | 7) => string;
 
 export type BaseContextOptions = {
   databaseName?: string;
-  databaseVersion?: DatabaseVersion;
   schemaName?: string;
   overrideTableName?: string;
   namingStrategy?: 'default' | 'hash' | NamingInterface;
+  uuidFunction?: string | UuidFunctionFactory;
 };
 
 export type SchemaFromCodeOptions = BaseContextOptions & {

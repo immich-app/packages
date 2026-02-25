@@ -20,6 +20,39 @@ export const processColumns: Processor = (ctx, items) => {
       continue;
     }
 
+    if ('strategy' in options) {
+      switch (options.strategy) {
+        // auto uuid based on database type
+        case 'uuid': {
+          options.type = 'uuid';
+          options.default = () => ctx.uuidFunctionFactory();
+          break;
+        }
+
+        case 'uuid-v4': {
+          options.type = 'uuid';
+          options.default = () => ctx.uuidFunctionFactory(4);
+          break;
+        }
+
+        case 'uuid-v7': {
+          options.type = 'uuid';
+          options.default = () => ctx.uuidFunctionFactory(7);
+          break;
+        }
+
+        case 'identity': {
+          options.identity = true;
+          options.type = 'integer';
+          break;
+        }
+
+        default: {
+          throw new Error(`Unsupported generated column strategy ${options.strategy}`);
+        }
+      }
+    }
+
     let defaultValue = fromColumnValue(options.default);
     let nullable = options.nullable ?? false;
 

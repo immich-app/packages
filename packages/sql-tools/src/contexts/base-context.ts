@@ -10,7 +10,7 @@ import {
   DatabaseParameter,
   DatabaseSchema,
   DatabaseTable,
-  DatabaseVersion,
+  UuidFunctionFactory,
 } from 'src/types';
 
 const asOverrideKey = (type: string, name: string) => `${type}:${name}`;
@@ -35,11 +35,19 @@ const asNamingStrategy = (strategy: 'hash' | 'default' | NamingInterface): Namin
   }
 };
 
+const asUuidFunctionStrategy = (uuidFunction: string | UuidFunctionFactory): UuidFunctionFactory => {
+  return typeof uuidFunction === 'string' ? () => uuidFunction : uuidFunction;
+};
+
+const defaultUuidFunction: UuidFunctionFactory = (version) => {
+  return version === 4 ? 'uuidv4()' : 'uuidv7()';
+};
+
 export class BaseContext {
   databaseName: string;
-  databaseVersion: DatabaseVersion;
   schemaName: string;
   overrideTableName: string;
+  uuidFunctionFactory: UuidFunctionFactory;
 
   tables: DatabaseTable[] = [];
   functions: DatabaseFunction[] = [];
@@ -53,10 +61,10 @@ export class BaseContext {
 
   constructor(options: BaseContextOptions) {
     this.databaseName = options.databaseName ?? 'postgres';
-    this.databaseVersion = options.databaseVersion ?? 'postgres-14';
     this.schemaName = options.schemaName ?? 'public';
     this.overrideTableName = options.overrideTableName ?? 'migration_overrides';
     this.namingStrategy = asNamingStrategy(options.namingStrategy ?? 'hash');
+    this.uuidFunctionFactory = asUuidFunctionStrategy(options.uuidFunction ?? defaultUuidFunction);
   }
 
   getNameFor(item: NamingItem) {
