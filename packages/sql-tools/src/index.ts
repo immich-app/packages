@@ -21,6 +21,7 @@ export * from 'src/decorators/trigger-function.decorator';
 export * from 'src/decorators/trigger.decorator';
 export * from 'src/decorators/unique.decorator';
 export * from 'src/decorators/update-date-column.decorator';
+export * from 'src/migration';
 export * from 'src/naming/default.naming';
 export * from 'src/naming/hash.naming';
 export * from 'src/naming/naming.interface';
