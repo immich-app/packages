@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.2](https://github.com/immich-app/packages/compare/sql-tools-v0.3.1...sql-tools-v0.3.2) (2026-02-26)
+
+
+### Bug Fixes
+
+* kysely bundling ([#25](https://github.com/immich-app/packages/issues/25)) ([598b030](https://github.com/immich-app/packages/commit/598b0306cc67323f25f499086cad7789c01cc5ed))
+* types ([#27](https://github.com/immich-app/packages/issues/27)) ([4de6137](https://github.com/immich-app/packages/commit/4de61377d5611f2e6a038d5f2fe212db043d895d))
+
 ## [0.3.1](https://github.com/immich-app/packages/compare/sql-tools-v0.3.0...sql-tools-v0.3.1) (2026-02-26)
 
 
