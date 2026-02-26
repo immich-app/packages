@@ -10,8 +10,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   build: {
     lib: {
-      entry: ['src/bin/cli.ts', resolve(__dirname, 'src/index.js')],
-      name: 'SQL Tools',
+      entry: [resolve(__dirname, 'src/index.ts'), resolve(__dirname, 'src/bin/cli.ts')],
+      name: '@immich/sql-tools',
       formats: ['es'],
     },
     rollupOptions: {
@@ -36,5 +36,5 @@ export default defineConfig({
       TZ: 'UTC',
     },
   },
-  plugins: [swc.vite(), tsconfigPaths(), dts({ rollupTypes: true, tsconfigPath: './tsconfig.json', include: ['src'] })],
+  plugins: [swc.vite(), tsconfigPaths(), dts({ rollupTypes: true, tsconfigPath: './tsconfig.json' })],
 });
