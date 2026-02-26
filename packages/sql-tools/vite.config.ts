@@ -15,7 +15,6 @@ export default defineConfig({
       formats: ['es'],
     },
     rollupOptions: {
-      external: [/kysely\/.*/, 'kysely-postgres-js', 'postgres'],
       output: {
         dir: 'dist',
       },
@@ -23,8 +22,7 @@ export default defineConfig({
     ssr: true,
   },
   ssr: {
-    // bundle everything except for Node built-ins
-    noExternal: /^(?!node:).*$/,
+    noExternal: /^src.*$/,
   },
   test: {
     server: {
