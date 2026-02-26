@@ -3,11 +3,37 @@ import { PostgresJSDialect } from 'kysely-postgres-js';
 import { existsSync, mkdirSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { readdir } from 'node:fs/promises';
 import { basename, dirname, extname, join } from 'node:path';
-import { DatabaseConnectionParams, createPostgres, schemaDiff, schemaFromCode, schemaFromDatabase } from 'src';
+import {
+  DatabaseConnectionParams,
+  UuidFunctionFactory,
+  createPostgres,
+  schemaDiff,
+  schemaFromCode,
+  schemaFromDatabase,
+} from 'src';
 
 type MigrationProps = {
   up: string[];
   down: string[];
+};
+
+const defaultUuidFactory = ({ db, major }: { db: string; major: string }): UuidFunctionFactory => {
+  switch (db) {
+    case 'PostgreSQL': {
+      switch (major) {
+        case '18': {
+          return (version) => (version === 4 ? 'uuidv4()' : 'uuidv7()');
+        }
+        default: {
+          return () => 'uuid_generate_v4()';
+        }
+      }
+    }
+
+    default: {
+      throw new Error(`Unsupported database: ${db}`);
+    }
+  }
 };
 
 export class Migrator {
@@ -15,15 +41,18 @@ export class Migrator {
   #migrator: KyselyMigrator;
   #connectionParams: DatabaseConnectionParams;
   #migrationsFolder: string;
+  #uuidFactory: typeof defaultUuidFactory;
 
   constructor(options: {
     connectionParams: DatabaseConnectionParams;
     allowUnorderedMigrations: boolean;
     migrationFolder: string;
+    uuidFactory?: typeof defaultUuidFactory;
   }) {
-    const { connectionParams, allowUnorderedMigrations, migrationFolder } = options;
+    const { connectionParams, allowUnorderedMigrations, migrationFolder, uuidFactory } = options;
     this.#connectionParams = connectionParams;
     this.#migrationsFolder = migrationFolder;
+    this.#uuidFactory = uuidFactory ?? defaultUuidFactory;
     this.#db = this.#getDatabaseClient();
     this.#migrator = this.#getMigrator(allowUnorderedMigrations);
   }
@@ -110,7 +139,7 @@ export class Migrator {
       return;
     }
 
-    this.markMigrationAsReverted(migrationName, migrationsDistFolder);
+    this.#markMigrationAsReverted(migrationName, migrationsDistFolder);
   };
 
   generate = async ({
@@ -133,7 +162,7 @@ export class Migrator {
 
     await Promise.all(paths.map((path) => import(path)));
 
-    const { up, down } = await this.compare();
+    const { up, down } = await this.#compare();
     if (up.items.length === 0) {
       console.log('No changes detected');
       return;
@@ -148,12 +177,21 @@ export class Migrator {
     const folder = dirname(path);
     const fullPath = join(folder, filename);
     mkdirSync(folder, { recursive: true });
-    writeFileSync(fullPath, this.asMigration({ up, down }));
+    writeFileSync(fullPath, this.#asMigration({ up, down }));
     console.log(`Wrote ${fullPath}`);
   };
 
-  compare = async () => {
-    const source = schemaFromCode({ overrides: true, namingStrategy: 'default' });
+  #compare = async () => {
+    const { version } = await this.#db
+      .selectNoFrom(({ fn }) => fn('version').$castTo<string>().as('version'))
+      .executeTakeFirstOrThrow();
+    const { db, major } = /^(?<db>\w+) (?<major>\d+)\.(?<minor>\d+)(\.(?<patch>\d+))?.*$/.exec(version)?.groups ?? {};
+
+    const source = schemaFromCode({
+      overrides: true,
+      namingStrategy: 'default',
+      uuidFunction: this.#uuidFactory({ db, major }),
+    });
     const target = await schemaFromDatabase({ connection: this.#connectionParams });
 
     console.log(source.warnings.join('\n'));
@@ -173,7 +211,7 @@ export class Migrator {
     return { up, down };
   };
 
-  asMigration = ({ up, down }: MigrationProps) => {
+  #asMigration = ({ up, down }: MigrationProps) => {
     const upSql = up.map((sql) => `  await sql\`${sql}\`.execute(db);`).join('\n');
     const downSql = down.map((sql) => `  await sql\`${sql}\`.execute(db);`).join('\n');
 
@@ -189,7 +227,7 @@ ${downSql}
 `;
   };
 
-  markMigrationAsReverted = (migrationName: string, migrationsDistFolder: string) => {
+  #markMigrationAsReverted = (migrationName: string, migrationsDistFolder: string) => {
     const sourcePath = join(this.#migrationsFolder, `${migrationName}.ts`);
     const revertedFolder = join(this.#migrationsFolder, 'reverted');
     const revertedPath = join(revertedFolder, `${migrationName}.ts`);
