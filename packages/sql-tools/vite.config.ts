@@ -30,5 +30,5 @@ export default defineConfig({
       TZ: 'UTC',
     },
   },
-  plugins: [swc.vite(), tsconfigPaths(), dts({ rollupTypes: true, tsconfigPath: './tsconfig.build.json' })],
+  plugins: [swc.vite(), tsconfigPaths(), dts({ rollupTypes: true, tsconfigPath: './tsconfig.json' })],
 });
