@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.0](https://github.com/immich-app/packages/compare/sql-tools-v0.2.0...sql-tools-v0.3.0) (2026-02-26)
+
+
+### Features
+
+* sql tools cli ([#18](https://github.com/immich-app/packages/issues/18)) ([200cfb2](https://github.com/immich-app/packages/commit/200cfb2b28b93bc5c1ae537ba783b2b054feb577))
+* uuid configuration options ([#20](https://github.com/immich-app/packages/issues/20)) ([683c194](https://github.com/immich-app/packages/commit/683c194704a80c2ba2a9bc032d2aed030bac7a91))
+* version-aware migrations ([#22](https://github.com/immich-app/packages/issues/22)) ([bcb38ec](https://github.com/immich-app/packages/commit/bcb38ec0b0ab3d8f48613820a8e04e28b059db2d))
+
 ## [0.2.0](https://github.com/immich-app/packages/compare/sql-tools-v0.1.2...sql-tools-v0.2.0) (2026-02-20)
 
 
