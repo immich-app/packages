@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/immich-app/packages/compare/sql-tools-v0.3.0...sql-tools-v0.3.1) (2026-02-26)
+
+
+### Bug Fixes
+
+* sql tools types and cli ([#23](https://github.com/immich-app/packages/issues/23)) ([d4e68a9](https://github.com/immich-app/packages/commit/d4e68a90de4c0f30d9c201e67a157c4e6f538e7e))
+
 ## [0.3.0](https://github.com/immich-app/packages/compare/sql-tools-v0.2.0...sql-tools-v0.3.0) (2026-02-26)
 
 
