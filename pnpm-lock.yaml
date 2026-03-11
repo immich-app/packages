@@ -15,8 +15,8 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0(@eslint/js@10.0.1(eslint@10.0.2(jiti@2.6.1)))(@stylistic/eslint-plugin-js@4.4.1(eslint@10.0.2(jiti@2.6.1)))(eslint-config-prettier@10.1.8(eslint@10.0.2(jiti@2.6.1)))(eslint-plugin-n@17.24.0(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3))(eslint-plugin-svelte@3.15.0(eslint@10.0.2(jiti@2.6.1))(svelte@5.53.5))(eslint@10.0.2(jiti@2.6.1))(typescript-eslint@8.56.1(eslint@10.0.2(jiti@2.6.1))(typescript@5.9.3))(typescript@5.9.3)
       '@types/node':
-        specifier: ^25.3.1
-        version: 25.3.3
+        specifier: ^25.3.5
+        version: 25.4.0
       eslint:
         specifier: ^10.0.0
         version: 10.0.2(jiti@2.6.1)
@@ -58,16 +58,16 @@ importers:
         version: 1.5.9(@swc/core@1.15.11)(rollup@4.57.1)
       vite:
         specifier: ^7.3.1
-        version: 7.3.1(@types/node@25.3.3)(jiti@2.6.1)
+        version: 7.3.1(@types/node@25.4.0)(jiti@2.6.1)
       vite-plugin-dts:
         specifier: ^4.5.4
-        version: 4.5.4(@types/node@25.3.3)(rollup@4.57.1)(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1))
+        version: 4.5.4(@types/node@25.4.0)(rollup@4.57.1)(typescript@5.9.3)(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1))
       vite-tsconfig-paths:
         specifier: ^6.1.1
-        version: 6.1.1(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1))
+        version: 6.1.1(typescript@5.9.3)(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1))
       vitest:
         specifier: ^4.0.0
-        version: 4.0.18(@types/node@25.3.3)(jiti@2.6.1)
+        version: 4.0.18(@types/node@25.4.0)(jiti@2.6.1)
 
   packages/sql-tools:
     dependencies:
@@ -654,8 +654,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@25.3.3':
-    resolution: {integrity: sha512-DpzbrH7wIcBaJibpKo9nnSQL0MTRdnWttGyE5haGwK86xgMOkFLp7vEyfQPGLOJh5wNYiJ3V9PmUMDhV9u8kkQ==}
+  '@types/node@25.4.0':
+    resolution: {integrity: sha512-9wLpoeWuBlcbBpOY3XmzSTG3oscB6xjBEEtn+pYXTfhyXhIxC5FsBer2KTopBlvKEiW9l13po9fq+SJY/5lkhw==}
 
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
@@ -1952,23 +1952,23 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@microsoft/api-extractor-model@7.33.1(@types/node@25.3.3)':
+  '@microsoft/api-extractor-model@7.33.1(@types/node@25.4.0)':
     dependencies:
       '@microsoft/tsdoc': 0.16.0
       '@microsoft/tsdoc-config': 0.18.0
-      '@rushstack/node-core-library': 5.20.1(@types/node@25.3.3)
+      '@rushstack/node-core-library': 5.20.1(@types/node@25.4.0)
     transitivePeerDependencies:
       - '@types/node'
 
-  '@microsoft/api-extractor@7.57.1(@types/node@25.3.3)':
+  '@microsoft/api-extractor@7.57.1(@types/node@25.4.0)':
     dependencies:
-      '@microsoft/api-extractor-model': 7.33.1(@types/node@25.3.3)
+      '@microsoft/api-extractor-model': 7.33.1(@types/node@25.4.0)
       '@microsoft/tsdoc': 0.16.0
       '@microsoft/tsdoc-config': 0.18.0
-      '@rushstack/node-core-library': 5.20.1(@types/node@25.3.3)
+      '@rushstack/node-core-library': 5.20.1(@types/node@25.4.0)
       '@rushstack/rig-package': 0.7.1
-      '@rushstack/terminal': 0.22.1(@types/node@25.3.3)
-      '@rushstack/ts-command-line': 5.3.1(@types/node@25.3.3)
+      '@rushstack/terminal': 0.22.1(@types/node@25.4.0)
+      '@rushstack/ts-command-line': 5.3.1(@types/node@25.4.0)
       diff: 8.0.3
       lodash: 4.17.23
       minimatch: 10.1.2
@@ -2071,7 +2071,7 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.57.1':
     optional: true
 
-  '@rushstack/node-core-library@5.20.1(@types/node@25.3.3)':
+  '@rushstack/node-core-library@5.20.1(@types/node@25.4.0)':
     dependencies:
       ajv: 8.13.0
       ajv-draft-04: 1.0.0(ajv@8.13.0)
@@ -2082,28 +2082,28 @@ snapshots:
       resolve: 1.22.11
       semver: 7.5.4
     optionalDependencies:
-      '@types/node': 25.3.3
+      '@types/node': 25.4.0
 
-  '@rushstack/problem-matcher@0.2.1(@types/node@25.3.3)':
+  '@rushstack/problem-matcher@0.2.1(@types/node@25.4.0)':
     optionalDependencies:
-      '@types/node': 25.3.3
+      '@types/node': 25.4.0
 
   '@rushstack/rig-package@0.7.1':
     dependencies:
       resolve: 1.22.11
       strip-json-comments: 3.1.1
 
-  '@rushstack/terminal@0.22.1(@types/node@25.3.3)':
+  '@rushstack/terminal@0.22.1(@types/node@25.4.0)':
     dependencies:
-      '@rushstack/node-core-library': 5.20.1(@types/node@25.3.3)
-      '@rushstack/problem-matcher': 0.2.1(@types/node@25.3.3)
+      '@rushstack/node-core-library': 5.20.1(@types/node@25.4.0)
+      '@rushstack/problem-matcher': 0.2.1(@types/node@25.4.0)
       supports-color: 8.1.1
     optionalDependencies:
-      '@types/node': 25.3.3
+      '@types/node': 25.4.0
 
-  '@rushstack/ts-command-line@5.3.1(@types/node@25.3.3)':
+  '@rushstack/ts-command-line@5.3.1(@types/node@25.4.0)':
     dependencies:
-      '@rushstack/terminal': 0.22.1(@types/node@25.3.3)
+      '@rushstack/terminal': 0.22.1(@types/node@25.4.0)
       '@types/argparse': 1.0.38
       argparse: 1.0.10
       string-argv: 0.3.2
@@ -2201,7 +2201,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@25.3.3':
+  '@types/node@25.4.0':
     dependencies:
       undici-types: 7.18.2
 
@@ -2307,13 +2307,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.0.3
 
-  '@vitest/mocker@4.0.18(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1))':
+  '@vitest/mocker@4.0.18(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1))':
     dependencies:
       '@vitest/spy': 4.0.18
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 7.3.1(@types/node@25.3.3)(jiti@2.6.1)
+      vite: 7.3.1(@types/node@25.4.0)(jiti@2.6.1)
 
   '@vitest/pretty-format@4.0.18':
     dependencies:
@@ -3188,9 +3188,9 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite-plugin-dts@4.5.4(@types/node@25.3.3)(rollup@4.57.1)(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)):
+  vite-plugin-dts@4.5.4(@types/node@25.4.0)(rollup@4.57.1)(typescript@5.9.3)(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1)):
     dependencies:
-      '@microsoft/api-extractor': 7.57.1(@types/node@25.3.3)
+      '@microsoft/api-extractor': 7.57.1(@types/node@25.4.0)
       '@rollup/pluginutils': 5.3.0(rollup@4.57.1)
       '@volar/typescript': 2.4.28
       '@vue/language-core': 2.2.0(typescript@5.9.3)
@@ -3201,23 +3201,23 @@ snapshots:
       magic-string: 0.30.21
       typescript: 5.9.3
     optionalDependencies:
-      vite: 7.3.1(@types/node@25.3.3)(jiti@2.6.1)
+      vite: 7.3.1(@types/node@25.4.0)(jiti@2.6.1)
     transitivePeerDependencies:
       - '@types/node'
       - rollup
       - supports-color
 
-  vite-tsconfig-paths@6.1.1(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1)):
+  vite-tsconfig-paths@6.1.1(typescript@5.9.3)(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1)):
     dependencies:
       debug: 4.4.3
       globrex: 0.1.2
       tsconfck: 3.1.6(typescript@5.9.3)
-      vite: 7.3.1(@types/node@25.3.3)(jiti@2.6.1)
+      vite: 7.3.1(@types/node@25.4.0)(jiti@2.6.1)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1):
+  vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1):
     dependencies:
       esbuild: 0.27.3
       fdir: 6.5.0(picomatch@4.0.3)
@@ -3226,14 +3226,14 @@ snapshots:
       rollup: 4.57.1
       tinyglobby: 0.2.15
     optionalDependencies:
-      '@types/node': 25.3.3
+      '@types/node': 25.4.0
       fsevents: 2.3.3
       jiti: 2.6.1
 
-  vitest@4.0.18(@types/node@25.3.3)(jiti@2.6.1):
+  vitest@4.0.18(@types/node@25.4.0)(jiti@2.6.1):
     dependencies:
       '@vitest/expect': 4.0.18
-      '@vitest/mocker': 4.0.18(vite@7.3.1(@types/node@25.3.3)(jiti@2.6.1))
+      '@vitest/mocker': 4.0.18(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1))
       '@vitest/pretty-format': 4.0.18
       '@vitest/runner': 4.0.18
       '@vitest/snapshot': 4.0.18
@@ -3250,10 +3250,10 @@ snapshots:
       tinyexec: 1.0.2
       tinyglobby: 0.2.15
       tinyrainbow: 3.0.3
-      vite: 7.3.1(@types/node@25.3.3)(jiti@2.6.1)
+      vite: 7.3.1(@types/node@25.4.0)(jiti@2.6.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 25.3.3
+      '@types/node': 25.4.0
     transitivePeerDependencies:
       - jiti
       - less
