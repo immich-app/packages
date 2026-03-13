@@ -1,6 +1,4 @@
-import swc from 'unplugin-swc';
 import dts from 'vite-plugin-dts';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
@@ -10,12 +8,15 @@ export default defineConfig({
       name: '@immich/sql-tools',
       formats: ['es'],
     },
-    rollupOptions: {
+    rolldownOptions: {
       output: {
         dir: 'dist',
       },
     },
     ssr: true,
+  },
+  resolve: {
+    tsconfigPaths: true,
   },
   ssr: {
     noExternal: /^src.*$/,
@@ -30,5 +31,5 @@ export default defineConfig({
       TZ: 'UTC',
     },
   },
-  plugins: [swc.vite(), tsconfigPaths(), dts({ rollupTypes: true, tsconfigPath: './tsconfig.json' })],
+  plugins: [dts({ rollupTypes: true, tsconfigPath: './tsconfig.json' })],
 });

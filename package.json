@@ -36,10 +36,8 @@
     "svelte": "^5.42.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.56.0",
-    "unplugin-swc": "^1.5.9",
-    "vite": "^7.3.1",
+    "vite": "^8.0.0",
     "vite-plugin-dts": "^4.5.4",
-    "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.0.0"
+    "vitest": "^4.1.0"
   }
 }
