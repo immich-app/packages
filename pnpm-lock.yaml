@@ -70,10 +70,10 @@ importers:
         version: 14.0.3
       kysely:
         specifier: ^0.28.11
-        version: 0.28.12
+        version: 0.28.14
       kysely-postgres-js:
         specifier: ^3.0.0
-        version: 3.0.0(kysely@0.28.12)(postgres@3.4.8)
+        version: 3.0.0(kysely@0.28.14)(postgres@3.4.8)
       pg-connection-string:
         specifier: ^2.11.0
         version: 2.12.0
@@ -1291,8 +1291,8 @@ packages:
       postgres:
         optional: true
 
-  kysely@0.28.12:
-    resolution: {integrity: sha512-kWiueDWXhbCchgiotwXkwdxZE/6h56IHAeFWg4euUfW0YsmO9sxbAxzx1KLLv2lox15EfuuxHQvgJ1qIfZuHGw==}
+  kysely@0.28.14:
+    resolution: {integrity: sha512-SU3lgh0rPvq7upc6vvdVrCsSMUG1h3ChvHVOY7wJ2fw4C9QEB7X3d5eyYEyULUX7UQtxZJtZXGuT6U2US72UYA==}
     engines: {node: '>=20.0.0'}
 
   levn@0.4.1:
@@ -2972,13 +2972,13 @@ snapshots:
 
   kolorist@1.8.0: {}
 
-  kysely-postgres-js@3.0.0(kysely@0.28.12)(postgres@3.4.8):
+  kysely-postgres-js@3.0.0(kysely@0.28.14)(postgres@3.4.8):
     dependencies:
-      kysely: 0.28.12
+      kysely: 0.28.14
     optionalDependencies:
       postgres: 3.4.8
 
-  kysely@0.28.12: {}
+  kysely@0.28.14: {}
 
   levn@0.4.1:
     dependencies:
