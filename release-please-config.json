@@ -23,7 +23,8 @@
     },
     "packages/svelte-markdown-preprocess": {
       "component": "svelte-markdown-preprocess",
-      "bump-minor-pre-major": true
+      "bump-minor-pre-major": true,
+      "bootstrap-sha": "c68fafab7099f6c7cc66f6328dafca5681520b22"
     }
   }
 }
