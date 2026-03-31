@@ -21,7 +21,7 @@ export const markedSvelte = (): MarkedExtension => ({
         case 4:
         case 5:
         case 6: {
-          return `<Markdown.Heading id="${id}" level={${depth}}>${text}</Markdown.Heading>\n`;
+          return `<Markdown.Heading${createAttributes({ id, level: depth })}>${text}</Markdown.Heading>\n`;
         }
       }
 
@@ -29,13 +29,10 @@ export const markedSvelte = (): MarkedExtension => ({
     },
 
     list({ items, ordered, start }) {
-      const startAttribute = start && start !== 1 ? ` start={${start}}` : '';
-      let output = '';
-      output += `<Markdown.List ordered={${ordered}}${startAttribute}>\n`;
+      let output = `<Markdown.List${createAttributes({ ordered, start: start === 1 ? undefined : start })}>\n`;
       for (const item of items) {
         const content = this.parser.parse(item.tokens);
-        const attributes = [item.task && 'task', item.checked && 'checked'].filter(Boolean);
-        output += `<Markdown.ListItem ${attributes.join(' ')}>${content}</Markdown.ListItem>\n`;
+        output += `<Markdown.ListItem${createAttributes({ task: item.task ? true : undefined, checked: item.checked })}>${content}</Markdown.ListItem>\n`;
       }
       output += `</Markdown.List>\n`;
 
