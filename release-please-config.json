@@ -15,6 +15,11 @@
       "component": "sql-tools",
       "changelog-path": "CHANGELOG.md",
       "bump-minor-pre-major": true
+    },
+    "packages/kysely-adapter-cloudflare": {
+      "component": "kysely-adapter-cloudflare",
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": true
     }
   }
 }
