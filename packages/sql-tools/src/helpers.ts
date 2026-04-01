@@ -12,7 +12,31 @@ export const asOptions = <T extends { name?: string }>(options: string | T): T =
 
 export const sha1 = (value: string) => createHash('sha1').update(value).digest('hex');
 
-export const fromColumnValue = (columnValue?: ColumnValue) => {
+const escapeArrayValue = (value: unknown) => {
+  if (value === null) {
+    return 'NULL';
+  }
+
+  if (typeof value !== 'string') {
+    return value;
+  }
+
+  if (value.trim() !== value || value.trim().length === 0) {
+    return `"${value}"`;
+  }
+
+  if (/[{},"\\]/.test(value)) {
+    return `"${value.replaceAll('\\', String.raw`\\`).replaceAll('"', String.raw`\"`)}"`;
+  }
+
+  if (value.toLowerCase() === 'null') {
+    return `"${value}"`;
+  }
+
+  return value;
+};
+
+export const fromColumnValue = (columnValue?: ColumnValue): string | undefined | null => {
   if (columnValue === undefined) {
     return;
   }
@@ -40,7 +64,7 @@ export const fromColumnValue = (columnValue?: ColumnValue) => {
   }
 
   if (Array.isArray(value)) {
-    return `'{${value.map((entry) => `"${entry}"`).join(', ')}}'`;
+    return `'{${value.map((entry) => (Array.isArray(entry) ? fromColumnValue(entry)?.slice(1, -1) : escapeArrayValue(entry))).join(', ')}}'`;
   }
 
   return `'${String(value)}'`;
