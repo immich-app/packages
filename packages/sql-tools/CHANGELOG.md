@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/immich-app/packages/compare/sql-tools-v0.3.2...sql-tools-v0.3.3) (2026-04-01)
+
+
+### Bug Fixes
+
+* **sql-tools:** default array with values ([#51](https://github.com/immich-app/packages/issues/51)) ([dca38f8](https://github.com/immich-app/packages/commit/dca38f8223a9217ebad8661cf1c505b91070e237))
+
 ## [0.3.2](https://github.com/immich-app/packages/compare/sql-tools-v0.3.1...sql-tools-v0.3.2) (2026-02-26)
 
 
