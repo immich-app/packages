@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.4](https://github.com/immich-app/packages/compare/sql-tools-v0.3.3...sql-tools-v0.3.4) (2026-04-01)
+
+
+### Bug Fixes
+
+* **sql-tools:** do not quote all array values ([#53](https://github.com/immich-app/packages/issues/53)) ([9bdd302](https://github.com/immich-app/packages/commit/9bdd302edfc90c88da9153104fee26afca225c08))
+
 ## [0.3.3](https://github.com/immich-app/packages/compare/sql-tools-v0.3.2...sql-tools-v0.3.3) (2026-04-01)
 
 
