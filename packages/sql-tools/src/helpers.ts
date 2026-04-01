@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { ColumnValue } from 'src/decorators/column.decorator';
-import { Comparer, DatabaseColumn, DatabaseOverride, IgnoreOptions, SchemaDiff } from 'src/types';
+import { Comparer, DatabaseColumn, DatabaseOverride, IgnoreOptions, OutputTarget, SchemaDiff } from 'src/types';
 
 export const asOptions = <T extends { name?: string }>(options: string | T): T => {
   if (typeof options === 'string') {
@@ -252,8 +252,14 @@ export const asColumnComment = (tableName: string, columnName: string, comment: 
 
 export const asColumnList = (columns: string[]) => columns.map((column) => `"${column}"`).join(', ');
 
-export const asJsonString = (value: unknown): string => {
-  return `'${escape(JSON.stringify(value))}'::jsonb`;
+export const asJsonString = (input: unknown, options: { outputTarget: OutputTarget }): string => {
+  let value = JSON.stringify(input);
+
+  if (options.outputTarget === 'javascript') {
+    value = escape(value);
+  }
+
+  return `$json$${value}$json$::jsonb`;
 };
 
 const escape = (value: string) => {

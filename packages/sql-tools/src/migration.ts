@@ -57,13 +57,13 @@ export class Migrator {
     this.#migrator = this.#getMigrator(allowUnorderedMigrations);
   }
 
-  #getDatabaseClient = () => {
+  #getDatabaseClient() {
     return new Kysely<unknown>({
       dialect: new PostgresJSDialect({ postgres: createPostgres({ connection: this.#connectionParams }) }),
     });
-  };
+  }
 
-  #getMigrator = (allowUnorderedMigrations: boolean) => {
+  #getMigrator(allowUnorderedMigrations: boolean) {
     return new KyselyMigrator({
       db: this.#db,
       migrationLockTableName: 'kysely_migrations_lock',
@@ -75,7 +75,7 @@ export class Migrator {
         migrationFolder: join(this.#migrationsFolder),
       }),
     });
-  };
+  }
 
   getDatabase() {
     return this.#db;
@@ -132,7 +132,7 @@ export class Migrator {
     return reverted.migrationName;
   }
 
-  revert = async (migrationsDistFolder: string) => {
+  async revert(migrationsDistFolder: string) {
     const migrationName = await this.#revertLastMigration();
     if (!migrationName) {
       console.log('No migrations to revert');
@@ -140,17 +140,9 @@ export class Migrator {
     }
 
     this.#markMigrationAsReverted(migrationName, migrationsDistFolder);
-  };
+  }
 
-  generate = async ({
-    dist,
-    targetPath,
-    withComments,
-  }: {
-    dist: string;
-    targetPath: string;
-    withComments: boolean;
-  }) => {
+  async generate({ dist, targetPath, withComments }: { dist: string; targetPath: string; withComments: boolean }) {
     const paths: string[] = [];
     for (const filename of await readdir(dist, { recursive: true })) {
       if (extname(filename) !== '.js') {
@@ -168,9 +160,9 @@ export class Migrator {
       return;
     }
     this.create(targetPath, up.asSql({ comments: withComments }), down.asSql({ comments: withComments }));
-  };
+  }
 
-  create = (path: string, up: string[], down: string[]) => {
+  create(path: string, up: string[], down: string[]) {
     const timestamp = Date.now();
     const name = basename(path, extname(path));
     const filename = `${timestamp}-${name}.ts`;
@@ -179,9 +171,9 @@ export class Migrator {
     mkdirSync(folder, { recursive: true });
     writeFileSync(fullPath, this.#asMigration({ up, down }));
     console.log(`Wrote ${fullPath}`);
-  };
+  }
 
-  #compare = async () => {
+  async #compare() {
     const { version } = await this.#db
       .selectNoFrom(({ fn }) => fn('version').$castTo<string>().as('version'))
       .executeTakeFirstOrThrow();
@@ -209,9 +201,9 @@ export class Migrator {
     });
 
     return { up, down };
-  };
+  }
 
-  #asMigration = ({ up, down }: MigrationProps) => {
+  #asMigration({ up, down }: MigrationProps) {
     const upSql = up.map((sql) => `  await sql\`${sql}\`.execute(db);`).join('\n');
     const downSql = down.map((sql) => `  await sql\`${sql}\`.execute(db);`).join('\n');
 
@@ -225,9 +217,9 @@ export async function down(db: Kysely<any>): Promise<void> {
 ${downSql}
 }
 `;
-  };
+  }
 
-  #markMigrationAsReverted = (migrationName: string, migrationsDistFolder: string) => {
+  #markMigrationAsReverted(migrationName: string, migrationsDistFolder: string) {
     const sourcePath = join(this.#migrationsFolder, `${migrationName}.ts`);
     const revertedFolder = join(this.#migrationsFolder, 'reverted');
     const revertedPath = join(revertedFolder, `${migrationName}.ts`);
@@ -250,7 +242,7 @@ ${downSql}
         console.log(`Removed ${filePath}`);
       }
     }
-  };
+  }
 
   destroy() {
     return this.#db.destroy();

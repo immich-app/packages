@@ -63,7 +63,7 @@ describe(transformIndexes.name, () => {
             tableName: 'table1',
             columnNames: ['id'],
             unique: false,
-            where: '("id" IS NOT NULL)',
+            where: '"id" IS NOT NULL',
             synchronize: true,
           },
           reason: 'unknown',

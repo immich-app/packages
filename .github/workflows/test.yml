@@ -36,3 +36,7 @@ jobs:
       - name: Run unit tests
         run: pnpm test
         if: ${{ !cancelled() }}
+
+      - name: Run medium tests
+        run: pnpm test:medium
+        if: ${{ !cancelled() }}

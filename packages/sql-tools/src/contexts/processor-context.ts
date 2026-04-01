@@ -59,13 +59,23 @@ export class ProcessorContext extends BaseContext {
     tableMetadata.methodToColumn.set(propertyName, column);
   }
 
-  warnMissingTable(context: string, object: object, propertyName?: symbol | string) {
-    const label = object.constructor.name + (propertyName ? '.' + String(propertyName) : '');
-    this.warn(context, `Unable to find table (${label})`);
+  onMissingTable(context: string, name: string): never;
+  onMissingTable(context: string, object: object, propertyName?: symbol | string): never;
+  onMissingTable(context: string, objectOrName: object | string, propertyName?: symbol | string): never {
+    const label =
+      typeof objectOrName === 'string'
+        ? objectOrName
+        : objectOrName.constructor.name + (propertyName ? '.' + String(propertyName) : '');
+    throw new Error(`[${context}] Unable to find table (${label})`);
   }
 
-  warnMissingColumn(context: string, object: object, propertyName?: symbol | string) {
-    const label = object.constructor.name + (propertyName ? '.' + String(propertyName) : '');
-    this.warn(context, `Unable to find column (${label})`);
+  onMissingColumn(context: string, name: string): never;
+  onMissingColumn(context: string, object: object, propertyName?: symbol | string): never;
+  onMissingColumn(context: string, objectOrName: object | string, propertyName?: symbol | string): never {
+    const label =
+      typeof objectOrName === 'string'
+        ? objectOrName
+        : objectOrName.constructor.name + (propertyName ? '.' + String(propertyName) : '');
+    throw new Error(`[${context}] Unable to find column (${label})`);
   }
 }

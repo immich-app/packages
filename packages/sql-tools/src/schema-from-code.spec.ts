@@ -1,15 +1,9 @@
-import { readdirSync } from 'node:fs';
-import { join } from 'node:path';
 import { schemaFromCode } from 'src/schema-from-code';
-import { SchemaFromCodeOptions } from 'src/types';
+import { importFixture, loadFixtures } from 'test/utils';
 import { describe, expect, it } from 'vitest';
 
-const importModule = async (filePath: string) => {
-  const module = await import(filePath);
-  const options: SchemaFromCodeOptions = module.options;
-
-  return { module, options };
-};
+const fixtures = loadFixtures('test/fixtures');
+const errorFixtures = loadFixtures('test/fixtures/errors');
 
 describe(schemaFromCode.name, () => {
   it('should work', () => {
@@ -27,31 +21,19 @@ describe(schemaFromCode.name, () => {
   });
 
   describe('test files', () => {
-    const errorStubs = readdirSync('test/fixtures/errors', { withFileTypes: true });
-    for (const file of errorStubs) {
-      const filePath = join(file.parentPath, file.name);
-      it(filePath, async () => {
-        const { module, options } = await importModule(filePath);
-
-        expect(module.message).toBeDefined();
-        expect(() => schemaFromCode({ ...options, reset: true })).toThrowError(module.message);
-      });
-    }
-
-    const stubs = readdirSync('test/fixtures', { withFileTypes: true });
-    for (const file of stubs) {
-      if (file.isDirectory()) {
-        continue;
-      }
-
-      const filePath = join(file.parentPath, file.name);
-      it(filePath, async () => {
-        const { module, options } = await importModule(filePath);
-
+    describe('errors', () => {
+      it.each(errorFixtures)('%s', async (name, filepath) => {
+        const module = await importFixture(filepath);
         expect(module.description).toBeDefined();
-        expect(module.schema).toBeDefined();
-        expect(schemaFromCode({ ...options, reset: true }), module.description).toEqual(module.schema);
+        expect(module.message).toBeDefined();
+        expect(() => schemaFromCode({ reset: true }), module.description).toThrow(module.message);
       });
-    }
+    });
+
+    it.each(fixtures)('%s', async (name, filepath) => {
+      const module = await importFixture(filepath);
+      expect(module.description).toBeDefined();
+      expect(schemaFromCode({ reset: true }), module.description).toMatchSnapshot();
+    });
   });
 });

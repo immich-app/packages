@@ -1,4 +1,4 @@
-import { Column, DatabaseSchema, Table } from 'src';
+import { Column, Table } from 'src';
 
 @Table()
 export class Table1 {
@@ -7,41 +7,3 @@ export class Table1 {
 }
 
 export const description = 'should create a column with an index';
-export const schema: DatabaseSchema = {
-  databaseName: 'postgres',
-  schemaName: 'public',
-  functions: [],
-  enums: [],
-  extensions: [],
-  parameters: [],
-  overrides: [],
-  tables: [
-    {
-      name: 'table1',
-      columns: [
-        {
-          name: 'column1',
-          tableName: 'table1',
-          type: 'character varying',
-          nullable: false,
-          isArray: false,
-          primary: false,
-          synchronize: true,
-        },
-      ],
-      indexes: [
-        {
-          name: 'IDX_50c4f9905061b1e506d38a2a38',
-          columnNames: ['column1'],
-          tableName: 'table1',
-          unique: false,
-          synchronize: true,
-        },
-      ],
-      triggers: [],
-      constraints: [],
-      synchronize: true,
-    },
-  ],
-  warnings: [],
-};

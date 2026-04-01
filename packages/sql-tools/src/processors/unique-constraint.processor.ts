@@ -6,8 +6,7 @@ export const processUniqueConstraints: Processor = (ctx, items) => {
   } of items.filter((item) => item.type === 'uniqueConstraint')) {
     const table = ctx.getTableByObject(object);
     if (!table) {
-      ctx.warnMissingTable('@Unique', object);
-      continue;
+      return ctx.onMissingTable('@Unique', object);
     }
 
     const tableName = table.name;
@@ -29,14 +28,12 @@ export const processUniqueConstraints: Processor = (ctx, items) => {
   } of items.filter((item) => item.type === 'column' || item.type === 'foreignKeyColumn')) {
     const { table, column } = ctx.getColumnByObjectAndPropertyName(object, propertyName);
     if (!table) {
-      ctx.warnMissingTable('@Column', object);
-      continue;
+      return ctx.onMissingTable('@Column', object);
     }
 
     if (!column) {
       // should be impossible since they are created in `column.processor.ts`
-      ctx.warnMissingColumn('@Column', object, propertyName);
-      continue;
+      return ctx.onMissingColumn('@Column', object, propertyName);
     }
 
     if (type === 'column' && !options.primary && (options.unique || options.uniqueConstraintName)) {

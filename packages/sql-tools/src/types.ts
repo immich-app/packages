@@ -42,6 +42,7 @@ export enum DatabaseSslMode {
 export type DatabaseConnectionParams = DatabaseConnectionURL | DatabaseConnectionParts;
 export type PostgresSsl = 'require' | 'allow' | 'prefer' | 'verify-full' | boolean | SSLConfig;
 export type UuidFunctionFactory = (version?: 4 | 7) => string;
+export type OutputTarget = 'sql' | 'javascript';
 
 export type BaseContextOptions = {
   databaseName?: string;
@@ -49,6 +50,7 @@ export type BaseContextOptions = {
   overrideTableName?: string;
   namingStrategy?: 'default' | 'hash' | NamingInterface;
   uuidFunction?: string | UuidFunctionFactory;
+  outputTarget?: OutputTarget;
 };
 
 export type SchemaFromCodeOptions = BaseContextOptions & {
@@ -79,6 +81,12 @@ export type SchemaDiffOptions = BaseContextOptions & {
   extensions?: IgnoreOptions;
   parameters?: IgnoreOptions;
   overrides?: IgnoreOptions;
+};
+
+export type SchemaDiffResult = {
+  items: SchemaDiff[];
+  asSql: (options?: SchemaDiffToSqlOptions) => string[];
+  asHuman: () => string[];
 };
 
 export type IgnoreOptions =

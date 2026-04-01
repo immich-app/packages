@@ -18,7 +18,8 @@
     "lint:fix": "pnpm lint -- --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
-    "test": "pnpm -r test"
+    "test": "pnpm -r test",
+    "test:medium": "pnpm -r test:medium"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

@@ -1,4 +1,15 @@
-import { DatabaseSchema, Table, Trigger } from 'src';
+import { registerFunction, Table, Trigger } from 'src';
+
+const test_fn = registerFunction({
+  name: 'test_fn',
+  returnType: 'TRIGGER',
+  language: 'PLPGSQL',
+  body: `
+    BEGIN
+      SELECT 1;
+      RETURN NULL;
+    END`,
+});
 
 @Table()
 @Trigger({
@@ -6,38 +17,8 @@ import { DatabaseSchema, Table, Trigger } from 'src';
   timing: 'before',
   actions: ['insert'],
   scope: 'row',
-  functionName: 'function1',
+  functionName: test_fn.name,
 })
 export class Table1 {}
 
 export const description = 'should a trigger with a specific name';
-export const schema: DatabaseSchema = {
-  databaseName: 'postgres',
-  schemaName: 'public',
-  functions: [],
-  enums: [],
-  extensions: [],
-  parameters: [],
-  overrides: [],
-  tables: [
-    {
-      name: 'table1',
-      columns: [],
-      indexes: [],
-      triggers: [
-        {
-          name: 'trigger1',
-          tableName: 'table1',
-          functionName: 'function1',
-          actions: ['insert'],
-          scope: 'row',
-          timing: 'before',
-          synchronize: true,
-        },
-      ],
-      constraints: [],
-      synchronize: true,
-    },
-  ],
-  warnings: [],
-};

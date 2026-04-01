@@ -1,4 +1,4 @@
-import { Column, DatabaseSchema, Table } from 'src';
+import { Column, Table } from 'src';
 
 const date = new Date(2023, 0, 1);
 
@@ -9,34 +9,3 @@ export class Table1 {
 }
 
 export const description = 'should register a table with a column with a default value (date)';
-export const schema: DatabaseSchema = {
-  databaseName: 'postgres',
-  schemaName: 'public',
-  functions: [],
-  enums: [],
-  extensions: [],
-  parameters: [],
-  overrides: [],
-  tables: [
-    {
-      name: 'table1',
-      columns: [
-        {
-          name: 'column1',
-          tableName: 'table1',
-          type: 'character varying',
-          nullable: false,
-          isArray: false,
-          primary: false,
-          synchronize: true,
-          default: "'2023-01-01T00:00:00.000Z'",
-        },
-      ],
-      indexes: [],
-      triggers: [],
-      constraints: [],
-      synchronize: true,
-    },
-  ],
-  warnings: [],
-};
