@@ -40,7 +40,7 @@ export const fromColumnValue = (columnValue?: ColumnValue) => {
   }
 
   if (Array.isArray(value)) {
-    return "'{}'";
+    return `'{${value.map((entry) => `"${entry}"`).join(', ')}}'`;
   }
 
   return `'${String(value)}'`;
