@@ -2,7 +2,7 @@ import { Column, DatabaseSchema, Table } from 'src';
 
 @Table()
 export class Table1 {
-  @Column({ type: 'character varying', array: true, default: [] })
+  @Column({ type: 'character varying', array: true, default: ['a', 'b'] })
   column1!: string[];
 }
 
@@ -27,7 +27,7 @@ export const schema: DatabaseSchema = {
           isArray: true,
           primary: false,
           synchronize: true,
-          default: "'{}'",
+          default: `'{"a", "b"}'`,
         },
       ],
       indexes: [],
