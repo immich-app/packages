@@ -116,6 +116,20 @@ exports[`markup > should render 'link-shothand.md' correctly 1`] = `
 }
 `;
 
+exports[`markup > should render 'list.md' correctly 1`] = `
+{
+  "code": "<script lang="ts">
+  import { Markdown } from '@immich/ui';
+</script>
+<Markdown.List ordered>
+<Markdown.ListItem>First item</Markdown.ListItem>
+<Markdown.ListItem>Second item</Markdown.ListItem>
+<Markdown.ListItem>Third item</Markdown.ListItem>
+</Markdown.List>
+",
+}
+`;
+
 exports[`markup > should render 'snippets.md' correctly 1`] = `
 {
   "code": "<script lang="ts">
