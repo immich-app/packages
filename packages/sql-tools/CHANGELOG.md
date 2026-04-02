@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/immich-app/packages/compare/sql-tools-v0.3.4...sql-tools-v0.4.0) (2026-04-02)
+
+
+### Features
+
+* medium tests ([#55](https://github.com/immich-app/packages/issues/55)) ([01ca519](https://github.com/immich-app/packages/commit/01ca519eac7836d2012d26e69d8c7e3c2a8fa810))
+* **sql-tools:** more triggers ([#56](https://github.com/immich-app/packages/issues/56)) ([dc7abb1](https://github.com/immich-app/packages/commit/dc7abb12e1d28a67167a3910c6d66c2015801cb0))
+
 ## [0.3.4](https://github.com/immich-app/packages/compare/sql-tools-v0.3.3...sql-tools-v0.3.4) (2026-04-01)
 
 
