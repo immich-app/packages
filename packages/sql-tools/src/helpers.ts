@@ -255,11 +255,9 @@ export const asColumnList = (columns: string[]) => columns.map((column) => `"${c
 export const asJsonString = (input: unknown, options: { outputTarget: OutputTarget }): string => {
   let value = JSON.stringify(input);
 
-  if (options.outputTarget === 'javascript') {
-    value = escape(value);
-  }
+  value = options.outputTarget === 'javascript' ? `'${escape(value)}'` : `$json$${value}$json$`;
 
-  return `$json$${value}$json$::jsonb`;
+  return `${value}::jsonb`;
 };
 
 const escape = (value: string) => {
