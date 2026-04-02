@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/immich-app/packages/compare/sql-tools-v0.4.1...sql-tools-v0.4.2) (2026-04-02)
+
+
+### Bug Fixes
+
+* **sql-tools:** migration escaping ([#60](https://github.com/immich-app/packages/issues/60)) ([f3d30d2](https://github.com/immich-app/packages/commit/f3d30d2b2fdad597df0ebe50bed144b753a67d91))
+
 ## [0.4.1](https://github.com/immich-app/packages/compare/sql-tools-v0.4.0...sql-tools-v0.4.1) (2026-04-02)
 
 
