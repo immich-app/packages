@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/immich-app/packages/compare/sql-tools-v0.4.0...sql-tools-v0.4.1) (2026-04-02)
+
+
+### Bug Fixes
+
+* transform overrides ([#58](https://github.com/immich-app/packages/issues/58)) ([3b29a4c](https://github.com/immich-app/packages/commit/3b29a4c34862df3e85abc89f3269265b8d297f2d))
+
 ## [0.4.0](https://github.com/immich-app/packages/compare/sql-tools-v0.3.4...sql-tools-v0.4.0) (2026-04-02)
 
 
