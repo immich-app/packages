@@ -22,6 +22,23 @@ export default defineConfig({
     noExternal: /^src.*$/,
   },
   test: {
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: 'unit',
+          include: ['src/**/*.spec.ts'],
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: 'medium',
+          globalSetup: ['test/medium/globalSetup.ts'],
+          include: ['test/medium/**/*.spec.ts'],
+        },
+      },
+    ],
     server: {
       deps: {
         fallbackCJS: true,

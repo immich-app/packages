@@ -1,4 +1,4 @@
-import { Column, ConstraintType, DatabaseSchema, Table } from 'src';
+import { Column, Table } from 'src';
 
 @Table()
 export class Table1 {
@@ -7,41 +7,3 @@ export class Table1 {
 }
 
 export const description = 'should create a unique key constraint with a default name';
-export const schema: DatabaseSchema = {
-  databaseName: 'postgres',
-  schemaName: 'public',
-  functions: [],
-  enums: [],
-  extensions: [],
-  parameters: [],
-  overrides: [],
-  tables: [
-    {
-      name: 'table1',
-      columns: [
-        {
-          name: 'id',
-          tableName: 'table1',
-          type: 'uuid',
-          nullable: false,
-          isArray: false,
-          primary: false,
-          synchronize: true,
-        },
-      ],
-      indexes: [],
-      triggers: [],
-      constraints: [
-        {
-          type: ConstraintType.UNIQUE,
-          name: 'UQ_b249cc64cf63b8a22557cdc8537',
-          tableName: 'table1',
-          columnNames: ['id'],
-          synchronize: true,
-        },
-      ],
-      synchronize: true,
-    },
-  ],
-  warnings: [],
-};

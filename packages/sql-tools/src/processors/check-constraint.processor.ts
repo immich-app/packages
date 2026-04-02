@@ -6,8 +6,7 @@ export const processCheckConstraints: Processor = (ctx, items) => {
   } of items.filter((item) => item.type === 'checkConstraint')) {
     const table = ctx.getTableByObject(object);
     if (!table) {
-      ctx.warnMissingTable('@Check', object);
-      continue;
+      return ctx.onMissingTable('@Check', object);
     }
 
     const tableName = table.name;

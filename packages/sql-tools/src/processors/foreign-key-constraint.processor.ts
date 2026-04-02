@@ -6,43 +6,27 @@ export const processForeignKeyConstraints: Processor = (ctx, items) => {
   } of items.filter((item) => item.type === 'foreignKeyConstraint')) {
     const table = ctx.getTableByObject(object);
     if (!table) {
-      ctx.warnMissingTable('@ForeignKeyConstraint', { name: 'referenceTable' });
-      continue;
+      return ctx.onMissingTable('@ForeignKeyConstraint', { name: 'referenceTable' });
     }
 
     const referenceTable = ctx.getTableByObject(options.referenceTable());
     if (!referenceTable) {
       const referenceTableName = options.referenceTable()?.name;
-      ctx.warn(
-        '@ForeignKeyConstraint.referenceTable',
-        `Unable to find table` + (referenceTableName ? ` (${referenceTableName})` : ''),
-      );
-      continue;
+      return ctx.onMissingTable('@ForeignKeyConstraint.referenceTable', referenceTableName ?? '');
     }
-
-    let missingColumn = false;
 
     for (const columnName of options.columns) {
       if (!table.columns.some(({ name }) => name === columnName)) {
         const metadata = ctx.getTableMetadata(table);
-        ctx.warn('@ForeignKeyConstraint.columns', `Unable to find column (${metadata.object.name}.${columnName})`);
-        missingColumn = true;
+        return ctx.onMissingColumn('@ForeignKeyConstraint.columns', `${metadata.object.name}.${columnName}`);
       }
     }
 
     for (const columnName of options.referenceColumns || []) {
       if (!referenceTable.columns.some(({ name }) => name === columnName)) {
         const metadata = ctx.getTableMetadata(referenceTable);
-        ctx.warn(
-          '@ForeignKeyConstraint.referenceColumns',
-          `Unable to find column (${metadata.object.name}.${columnName})`,
-        );
-        missingColumn = true;
+        return ctx.onMissingColumn('@ForeignKeyConstraint.referenceColumns', `${metadata.object.name}.${columnName}`);
       }
-    }
-
-    if (missingColumn) {
-      continue;
     }
 
     const referenceTableName = referenceTable.name;

@@ -1,0 +1,2569 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`schemaFromCode > test files > check-constraint-default-name.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "expression": "1=1",
+          "name": "CHK_8d2ecfd49b984941f6b2589799",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "check",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > check-constraint-override-name.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "expression": "1=1",
+          "name": "CHK_test",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "check",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-create-date.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": "now()",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "createdAt",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "timestamp with time zone",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-default-array.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": "'{}'",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column0",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+        {
+          "comment": undefined,
+          "default": "'{a, "b\\"", "", " hello world "}'",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+        {
+          "comment": undefined,
+          "default": "'{1, 2, 3}'",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column2",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+        {
+          "comment": undefined,
+          "default": "'{NULL}'",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column3",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-default-boolean.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": "true",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "boolean",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-default-date.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": "'2023-01-01T00:00:00.000Z'",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-default-function.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": "now()",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-default-null.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": true,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-default-number.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": "0",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "integer",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-default-string.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": "'foo'",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-delete-date.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "deletedAt",
+          "nullable": true,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "timestamp with time zone",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-enum-type.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [
+    {
+      "name": "test_enum",
+      "synchronize": true,
+      "values": [
+        "foo",
+        "bar",
+      ],
+    },
+  ],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": "test_enum",
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "enum",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-generated-identity.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": true,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "integer",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "column1",
+          ],
+          "name": "PK_50c4f9905061b1e506d38a2a380",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-generated-uuid.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": "uuidv7()",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "column1",
+          ],
+          "name": "PK_50c4f9905061b1e506d38a2a380",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-index-name.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [
+        {
+          "columnNames": [
+            "column1",
+          ],
+          "name": "IDX_test",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "unique": false,
+        },
+      ],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-index-name-default.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [
+        {
+          "columnNames": [
+            "column1",
+          ],
+          "name": "IDX_50c4f9905061b1e506d38a2a38",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "unique": false,
+        },
+      ],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-inferred-nullable.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": true,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-name-default.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-name-override.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column-1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-name-string.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column-1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-nullable.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": true,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-string-length.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": 2,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-unique-constraint-name-default.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "UQ_b249cc64cf63b8a22557cdc8537",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "unique",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-unique-constraint-name-override.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "UQ_test",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "unique",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > column-update-date.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": "now()",
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "updatedAt",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "timestamp with time zone",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > foreign-key-constraint.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "PK_b249cc64cf63b8a22557cdc8537",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "parentId",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "parentId",
+          ],
+          "name": "FK_3fcca5cc563abf256fc346e3ff4",
+          "onDelete": undefined,
+          "onUpdate": undefined,
+          "referenceColumnNames": [
+            "id",
+          ],
+          "referenceTableName": "table1",
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "foreign-key",
+        },
+      ],
+      "indexes": [
+        {
+          "columnNames": [
+            "parentId",
+          ],
+          "name": "IDX_3fcca5cc563abf256fc346e3ff",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "unique": false,
+        },
+      ],
+      "name": "table2",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > foreign-key-constraint-column-order.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id1",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id2",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id1",
+            "id2",
+          ],
+          "name": "PK_e457e8b1301b7bc06ef78188ee4",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "parentId1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "uuid",
+        },
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "parentId2",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "parentId1",
+            "parentId2",
+          ],
+          "name": "FK_aed36d04470eba20161aa8b1dc6",
+          "onDelete": undefined,
+          "onUpdate": undefined,
+          "referenceColumnNames": [
+            "id2",
+            "id1",
+          ],
+          "referenceTableName": "table1",
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "foreign-key",
+        },
+      ],
+      "indexes": [
+        {
+          "columnNames": [
+            "parentId1",
+            "parentId2",
+          ],
+          "name": "IDX_aed36d04470eba20161aa8b1dc",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "unique": false,
+        },
+      ],
+      "name": "table2",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > foreign-key-constraint-multiple-columns.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id1",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id2",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id1",
+            "id2",
+          ],
+          "name": "PK_e457e8b1301b7bc06ef78188ee4",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "parentId1",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "uuid",
+        },
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "parentId2",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "parentId1",
+            "parentId2",
+          ],
+          "name": "FK_aed36d04470eba20161aa8b1dc6",
+          "onDelete": undefined,
+          "onUpdate": undefined,
+          "referenceColumnNames": [
+            "id1",
+            "id2",
+          ],
+          "referenceTableName": "table1",
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "foreign-key",
+        },
+      ],
+      "indexes": [
+        {
+          "columnNames": [
+            "parentId1",
+            "parentId2",
+          ],
+          "name": "IDX_aed36d04470eba20161aa8b1dc",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "unique": false,
+        },
+      ],
+      "name": "table2",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > foreign-key-constraint-no-index.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "PK_b249cc64cf63b8a22557cdc8537",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "parentId",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "parentId",
+          ],
+          "name": "FK_3fcca5cc563abf256fc346e3ff4",
+          "onDelete": undefined,
+          "onUpdate": undefined,
+          "referenceColumnNames": [
+            "id",
+          ],
+          "referenceTableName": "table1",
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "foreign-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table2",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > foreign-key-constraint-no-primary.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "foo",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "foo",
+          ],
+          "name": "UQ_6b68eb623b528278ad78f99c208",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "unique",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "bar",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "bar",
+          ],
+          "name": "FK_7d9c784c98d12365d198d52e4e6",
+          "onDelete": undefined,
+          "onUpdate": undefined,
+          "referenceColumnNames": [
+            "foo",
+          ],
+          "referenceTableName": "table1",
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "foreign-key",
+        },
+      ],
+      "indexes": [
+        {
+          "columnNames": [
+            "bar",
+          ],
+          "name": "IDX_7d9c784c98d12365d198d52e4e",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "unique": false,
+        },
+      ],
+      "name": "table2",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > foreign-key-inferred-type.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "PK_b249cc64cf63b8a22557cdc8537",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "parentId",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "parentId",
+          ],
+          "name": "FK_3fcca5cc563abf256fc346e3ff4",
+          "onDelete": undefined,
+          "onUpdate": undefined,
+          "referenceColumnNames": [
+            "id",
+          ],
+          "referenceTableName": "table1",
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "foreign-key",
+        },
+      ],
+      "indexes": [
+        {
+          "columnNames": [
+            "parentId",
+          ],
+          "name": "IDX_3fcca5cc563abf256fc346e3ff",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "unique": false,
+        },
+      ],
+      "name": "table2",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > foreign-key-with-unique-constraint.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "PK_b249cc64cf63b8a22557cdc8537",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "parentId",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "parentId",
+          ],
+          "name": "FK_3fcca5cc563abf256fc346e3ff4",
+          "onDelete": undefined,
+          "onUpdate": undefined,
+          "referenceColumnNames": [
+            "id",
+          ],
+          "referenceTableName": "table1",
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "foreign-key",
+        },
+        {
+          "columnNames": [
+            "parentId",
+          ],
+          "name": "UQ_3fcca5cc563abf256fc346e3ff4",
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "unique",
+        },
+      ],
+      "indexes": [
+        {
+          "columnNames": [
+            "parentId",
+          ],
+          "name": "IDX_3fcca5cc563abf256fc346e3ff",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table2",
+          "unique": false,
+        },
+      ],
+      "name": "table2",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > index-name-default.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [],
+      "indexes": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "expression": undefined,
+          "name": "IDX_b249cc64cf63b8a22557cdc853",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "unique": false,
+          "using": undefined,
+          "where": undefined,
+          "with": undefined,
+        },
+      ],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > index-name-override.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [],
+      "indexes": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "expression": undefined,
+          "name": "IDX_test",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "unique": false,
+          "using": undefined,
+          "where": undefined,
+          "with": undefined,
+        },
+      ],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > index-with-expression.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": true,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "timestamp with time zone",
+        },
+      ],
+      "constraints": [],
+      "indexes": [
+        {
+          "columnNames": undefined,
+          "expression": "(("column1" at time zone 'UTC')::date)",
+          "name": "IDX_376788d186160c4faa5aaaef63",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "unique": false,
+          "using": undefined,
+          "where": undefined,
+          "with": undefined,
+        },
+      ],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > index-with-where.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "column1",
+          "nullable": true,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "character varying",
+        },
+      ],
+      "constraints": [],
+      "indexes": [
+        {
+          "columnNames": [
+            "column1",
+          ],
+          "expression": undefined,
+          "name": "IDX_9d55433a12bca5728dd25d5db0",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "unique": false,
+          "using": undefined,
+          "where": ""column1" IS NOT NULL",
+          "with": undefined,
+        },
+      ],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > primary-key-constraint-name-default.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "PK_b249cc64cf63b8a22557cdc8537",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > primary-key-constraint-name-override.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": true,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "PK_test",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > table-name-default.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > table-name-override.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [],
+      "constraints": [],
+      "indexes": [],
+      "name": "table-1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > table-name-string-option.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [],
+      "constraints": [],
+      "indexes": [],
+      "name": "table-1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > trigger-after-delete.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [
+    {
+      "expression": "CREATE OR REPLACE FUNCTION test_fn()
+  RETURNS TRIGGER
+  LANGUAGE PLPGSQL
+  AS $$
+    BEGIN
+      SELECT 1;
+      RETURN NULL;
+    END
+  $$;",
+      "name": "test_fn",
+      "override": undefined,
+      "synchronize": true,
+    },
+  ],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [
+        {
+          "actions": [
+            "delete",
+          ],
+          "functionName": "test_fn",
+          "name": "my_trigger",
+          "override": undefined,
+          "referencingNewTableAs": undefined,
+          "referencingOldTableAs": undefined,
+          "scope": "row",
+          "synchronize": true,
+          "tableName": "table1",
+          "timing": "after",
+          "when": undefined,
+        },
+      ],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > trigger-before-update.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [
+    {
+      "expression": "CREATE OR REPLACE FUNCTION test_fn()
+  RETURNS TRIGGER
+  LANGUAGE PLPGSQL
+  AS $$
+    BEGIN
+      SELECT 1;
+      RETURN NULL;
+    END
+  $$;",
+      "name": "test_fn",
+      "override": undefined,
+      "synchronize": true,
+    },
+  ],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [
+        {
+          "actions": [
+            "update",
+          ],
+          "functionName": "test_fn",
+          "name": "my_trigger",
+          "override": undefined,
+          "referencingNewTableAs": undefined,
+          "referencingOldTableAs": undefined,
+          "scope": "row",
+          "synchronize": true,
+          "tableName": "table1",
+          "timing": "before",
+          "when": undefined,
+        },
+      ],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > trigger-name-default.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [
+    {
+      "expression": "CREATE OR REPLACE FUNCTION test_fn()
+  RETURNS TRIGGER
+  LANGUAGE PLPGSQL
+  AS $$
+    BEGIN
+      SELECT 1;
+      RETURN NULL;
+    END
+  $$;",
+      "name": "test_fn",
+      "override": undefined,
+      "synchronize": true,
+    },
+  ],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [
+        {
+          "actions": [
+            "insert",
+          ],
+          "functionName": "test_fn",
+          "name": "TR_d3d780ebda61882ac0b03b33dbd",
+          "override": undefined,
+          "referencingNewTableAs": undefined,
+          "referencingOldTableAs": undefined,
+          "scope": "row",
+          "synchronize": true,
+          "tableName": "table1",
+          "timing": "before",
+          "when": undefined,
+        },
+      ],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > trigger-name-override.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [
+    {
+      "expression": "CREATE OR REPLACE FUNCTION test_fn()
+  RETURNS TRIGGER
+  LANGUAGE PLPGSQL
+  AS $$
+    BEGIN
+      SELECT 1;
+      RETURN NULL;
+    END
+  $$;",
+      "name": "test_fn",
+      "override": undefined,
+      "synchronize": true,
+    },
+  ],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [
+        {
+          "actions": [
+            "insert",
+          ],
+          "functionName": "test_fn",
+          "name": "trigger1",
+          "override": undefined,
+          "referencingNewTableAs": undefined,
+          "referencingOldTableAs": undefined,
+          "scope": "row",
+          "synchronize": true,
+          "tableName": "table1",
+          "timing": "before",
+          "when": undefined,
+        },
+      ],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > unique-constraint-name-default.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "UQ_b249cc64cf63b8a22557cdc8537",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "unique",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > unique-constraint-name-override.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "comment": undefined,
+          "default": undefined,
+          "enumName": undefined,
+          "identity": undefined,
+          "isArray": false,
+          "length": undefined,
+          "name": "id",
+          "nullable": false,
+          "primary": false,
+          "storage": undefined,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "UQ_test",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "unique",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;

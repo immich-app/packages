@@ -7,12 +7,23 @@ import { compareTables } from 'src/comparers/table.comparer';
 import { BaseContext } from 'src/contexts/base-context';
 import { compare } from 'src/helpers';
 import { transformers } from 'src/transformers';
-import { ConstraintType, DatabaseSchema, SchemaDiff, SchemaDiffOptions, SchemaDiffToSqlOptions } from 'src/types';
+import {
+  ConstraintType,
+  DatabaseSchema,
+  SchemaDiff,
+  SchemaDiffOptions,
+  SchemaDiffResult,
+  SchemaDiffToSqlOptions,
+} from 'src/types';
 
 /**
  * Compute the difference between two database schemas
  */
-export const schemaDiff = (source: DatabaseSchema, target: DatabaseSchema, options: SchemaDiffOptions = {}) => {
+export const schemaDiff = (
+  source: DatabaseSchema,
+  target: DatabaseSchema,
+  options: SchemaDiffOptions = {},
+): SchemaDiffResult => {
   const items = [
     ...compare(source.parameters, target.parameters, options.parameters, compareParameters()),
     ...compare(source.extensions, target.extensions, options.extensions, compareExtensions()),
@@ -70,7 +81,6 @@ export const schemaDiff = (source: DatabaseSchema, target: DatabaseSchema, optio
     ...itemMap.ParameterSet,
     ...itemMap.ParameterReset,
     ...itemMap.EnumCreate,
-    ...itemMap.TriggerDrop,
     ...itemMap.IndexDrop,
     ...itemMap.ConstraintDrop,
     ...itemMap.TableCreate,
@@ -85,13 +95,14 @@ export const schemaDiff = (source: DatabaseSchema, target: DatabaseSchema, optio
     ...itemMap.IndexCreate,
     ...itemMap.IndexRename,
     ...itemMap.TriggerCreate,
-    ...itemMap.ColumnDrop,
-    ...itemMap.TableDrop,
-    ...itemMap.EnumDrop,
-    ...itemMap.FunctionDrop,
     ...itemMap.OverrideCreate,
     ...itemMap.OverrideUpdate,
     ...itemMap.OverrideDrop,
+    ...itemMap.ColumnDrop,
+    ...itemMap.TriggerDrop,
+    ...itemMap.TableDrop,
+    ...itemMap.FunctionDrop,
+    ...itemMap.EnumDrop,
   ];
 
   return {

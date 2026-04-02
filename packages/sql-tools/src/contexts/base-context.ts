@@ -10,6 +10,7 @@ import {
   DatabaseParameter,
   DatabaseSchema,
   DatabaseTable,
+  OutputTarget,
   UuidFunctionFactory,
 } from 'src/types';
 
@@ -48,6 +49,7 @@ export class BaseContext {
   schemaName: string;
   overrideTableName: string;
   uuidFunctionFactory: UuidFunctionFactory;
+  outputTarget: OutputTarget;
 
   tables: DatabaseTable[] = [];
   functions: DatabaseFunction[] = [];
@@ -65,6 +67,7 @@ export class BaseContext {
     this.overrideTableName = options.overrideTableName ?? 'migration_overrides';
     this.namingStrategy = asNamingStrategy(options.namingStrategy ?? 'hash');
     this.uuidFunctionFactory = asUuidFunctionStrategy(options.uuidFunction ?? defaultUuidFunction);
+    this.outputTarget = options.outputTarget ?? 'javascript';
   }
 
   getNameFor(item: NamingItem) {

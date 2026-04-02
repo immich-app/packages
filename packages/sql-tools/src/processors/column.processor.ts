@@ -9,8 +9,7 @@ export const processColumns: Processor = (ctx, items) => {
   } of items.filter((item) => item.type === 'column' || item.type === 'foreignKeyColumn')) {
     const table = ctx.getTableByObject(object.constructor);
     if (!table) {
-      ctx.warnMissingTable(type === 'column' ? '@Column' : '@ForeignKeyColumn', object, propertyName);
-      continue;
+      return ctx.onMissingTable(type === 'column' ? '@Column' : '@ForeignKeyColumn', object, propertyName);
     }
 
     const columnName = options.name ?? ctx.getNameFor({ type: 'column', name: String(propertyName) });

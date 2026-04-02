@@ -1,4 +1,4 @@
-import { Column, DatabaseSchema, Table } from 'src';
+import { Column, Table } from 'src';
 
 @Table()
 export class Table1 {
@@ -7,34 +7,3 @@ export class Table1 {
 }
 
 export const description = 'should register a table with a column with a default value (number)';
-export const schema: DatabaseSchema = {
-  databaseName: 'postgres',
-  schemaName: 'public',
-  functions: [],
-  enums: [],
-  extensions: [],
-  parameters: [],
-  overrides: [],
-  tables: [
-    {
-      name: 'table1',
-      columns: [
-        {
-          name: 'column1',
-          tableName: 'table1',
-          type: 'integer',
-          nullable: false,
-          isArray: false,
-          primary: false,
-          synchronize: true,
-          default: '0',
-        },
-      ],
-      indexes: [],
-      triggers: [],
-      constraints: [],
-      synchronize: true,
-    },
-  ],
-  warnings: [],
-};

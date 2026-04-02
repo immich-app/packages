@@ -1,4 +1,4 @@
-import { Column, DatabaseSchema, registerEnum, Table } from 'src';
+import { Column, registerEnum, Table } from 'src';
 
 enum Test {
   Foo = 'foo',
@@ -14,40 +14,3 @@ export class Table1 {
 }
 
 export const description = 'should accept an enum type';
-export const schema: DatabaseSchema = {
-  databaseName: 'postgres',
-  schemaName: 'public',
-  functions: [],
-  enums: [
-    {
-      name: 'test_enum',
-      values: ['foo', 'bar'],
-      synchronize: true,
-    },
-  ],
-  extensions: [],
-  parameters: [],
-  overrides: [],
-  tables: [
-    {
-      name: 'table1',
-      columns: [
-        {
-          name: 'column1',
-          tableName: 'table1',
-          type: 'enum',
-          enumName: 'test_enum',
-          nullable: false,
-          isArray: false,
-          primary: false,
-          synchronize: true,
-        },
-      ],
-      indexes: [],
-      triggers: [],
-      constraints: [],
-      synchronize: true,
-    },
-  ],
-  warnings: [],
-};

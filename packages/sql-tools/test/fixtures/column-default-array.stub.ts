@@ -1,40 +1,18 @@
-import { Column, DatabaseSchema, Table } from 'src';
+import { Column, Table } from 'src';
 
 @Table()
 export class Table1 {
-  @Column({ type: 'character varying', array: true, default: ['a', 'b"', '', 3, ['\\'], ' hello world ', null] })
+  @Column({ type: 'character varying', default: [] })
+  column0!: string[];
+
+  @Column({ type: 'character varying', default: ['a', 'b"', '', ' hello world '] })
   column1!: string[];
+
+  @Column({ type: 'character varying', default: [1, 2, 3] })
+  column2!: string[];
+
+  @Column({ type: 'character varying', default: [null] })
+  column3!: string[];
 }
 
 export const description = 'should register a table with a column with a default value (array)';
-export const schema: DatabaseSchema = {
-  databaseName: 'postgres',
-  schemaName: 'public',
-  functions: [],
-  enums: [],
-  extensions: [],
-  parameters: [],
-  overrides: [],
-  tables: [
-    {
-      name: 'table1',
-      columns: [
-        {
-          name: 'column1',
-          tableName: 'table1',
-          type: 'character varying',
-          nullable: false,
-          isArray: true,
-          primary: false,
-          synchronize: true,
-          default: String.raw`'{a, "b\"", "", 3, {"\\"}, " hello world ", NULL}'`,
-        },
-      ],
-      indexes: [],
-      triggers: [],
-      constraints: [],
-      synchronize: true,
-    },
-  ],
-  warnings: [],
-};

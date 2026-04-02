@@ -6,20 +6,17 @@ export const processForeignKeyColumns: Processor = (ctx, items) => {
   } of items.filter((item) => item.type === 'foreignKeyColumn')) {
     const { table, column } = ctx.getColumnByObjectAndPropertyName(object, propertyName);
     if (!table) {
-      ctx.warnMissingTable('@ForeignKeyColumn', object);
-      continue;
+      return ctx.onMissingTable('@ForeignKeyColumn', object);
     }
 
     if (!column) {
       // should be impossible since they are pre-created in `column.processor.ts`
-      ctx.warnMissingColumn('@ForeignKeyColumn', object, propertyName);
-      continue;
+      return ctx.onMissingColumn('@ForeignKeyColumn', object, propertyName);
     }
 
     const referenceTable = ctx.getTableByObject(target());
     if (!referenceTable) {
-      ctx.warnMissingTable('@ForeignKeyColumn', object, propertyName);
-      continue;
+      return ctx.onMissingTable('@ForeignKeyColumn', object, propertyName);
     }
 
     const columnNames = [column.name];

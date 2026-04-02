@@ -1,10 +1,14 @@
-import { BeforeUpdateTrigger, DatabaseSchema, registerFunction, Table } from 'src';
-import { expect } from 'vitest';
+import { BeforeUpdateTrigger, registerFunction, Table } from 'src';
 
 const test_fn = registerFunction({
   name: 'test_fn',
-  body: 'SELECT 1;',
-  returnType: 'character varying',
+  returnType: 'TRIGGER',
+  language: 'PLPGSQL',
+  body: `
+    BEGIN
+      SELECT 1;
+      RETURN NULL;
+    END`,
 });
 
 @Table()
@@ -16,33 +20,3 @@ const test_fn = registerFunction({
 export class Table1 {}
 
 export const description = 'should create a trigger ';
-export const schema: DatabaseSchema = {
-  databaseName: 'postgres',
-  schemaName: 'public',
-  functions: [expect.any(Object)],
-  enums: [],
-  extensions: [],
-  parameters: [],
-  overrides: [],
-  tables: [
-    {
-      name: 'table1',
-      columns: [],
-      indexes: [],
-      triggers: [
-        {
-          name: 'my_trigger',
-          functionName: 'test_fn',
-          tableName: 'table1',
-          timing: 'before',
-          scope: 'row',
-          actions: ['update'],
-          synchronize: true,
-        },
-      ],
-      constraints: [],
-      synchronize: true,
-    },
-  ],
-  warnings: [],
-};

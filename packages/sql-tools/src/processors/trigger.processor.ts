@@ -6,8 +6,7 @@ export const processTriggers: Processor = (ctx, items) => {
   } of items.filter((item) => item.type === 'trigger')) {
     const table = ctx.getTableByObject(object);
     if (!table) {
-      ctx.warnMissingTable('@Trigger', object);
-      continue;
+      return ctx.onMissingTable('@Trigger', object);
     }
 
     const triggerName =

@@ -49,7 +49,7 @@ export const asIndexCreate = (index: DatabaseIndex): string => {
   }
 
   if (index.where) {
-    sql += ` WHERE ${index.where}`;
+    sql += ` WHERE (${index.where})`;
   }
 
   return sql + ';';
