@@ -4,10 +4,6 @@ import { SqlTransformer } from 'src/transformers/types';
 export const transformOverrides: SqlTransformer = (ctx, item) => {
   const tableName = ctx.overrideTableName;
 
-  if (ctx.outputTarget === 'javascript') {
-    throw new Error('uh oh');
-  }
-
   const toJson = (value: unknown) => asJsonString(value, { outputTarget: ctx.outputTarget });
 
   switch (item.type) {
