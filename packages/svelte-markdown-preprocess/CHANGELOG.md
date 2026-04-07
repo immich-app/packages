@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/immich-app/packages/compare/svelte-markdown-preprocess-v0.4.0...svelte-markdown-preprocess-v0.4.1) (2026-04-07)
+
+
+### Bug Fixes
+
+* list attributes ([#49](https://github.com/immich-app/packages/issues/49)) ([5fdc923](https://github.com/immich-app/packages/commit/5fdc9231291695535f0fe2e97aa91fca73da13c7))
+
 ## [0.4.0](https://github.com/immich-app/packages/compare/svelte-markdown-preprocess-v0.3.0...svelte-markdown-preprocess-v0.4.0) (2026-03-31)
 
 
