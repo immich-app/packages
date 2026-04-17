@@ -10,6 +10,7 @@ import { processFunctions } from 'src/processors/function.processor';
 import { processIndexes } from 'src/processors/index.processor';
 import { processOverrides } from 'src/processors/override.processor';
 import { processPrimaryKeyConstraints } from 'src/processors/primary-key-contraint.processor';
+import { processTableLoops } from 'src/processors/table-loops.processor';
 import { processTables } from 'src/processors/table.processor';
 import { processTriggers } from 'src/processors/trigger.processor';
 import { processUniqueConstraints } from 'src/processors/unique-constraint.processor';
@@ -31,4 +32,5 @@ export const processors: Processor[] = [
   processIndexes,
   processTriggers,
   processOverrides,
+  processTableLoops,
 ];

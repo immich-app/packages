@@ -1,26 +1,17 @@
 import { SqlTransformer } from 'src/transformers/types';
-import { DatabaseEnum } from 'src/types';
 
-export const transformEnums: SqlTransformer = (ctx, item) => {
-  switch (item.type) {
+export const transformEnums: SqlTransformer = (ctx, { object, type }) => {
+  switch (type) {
     case 'EnumCreate': {
-      return asEnumCreate(item.enum);
+      return `CREATE TYPE "${object.name}" AS ENUM (${object.values.map((value) => `'${value}'`)});`;
     }
 
     case 'EnumDrop': {
-      return asEnumDrop(item.enumName);
+      return `DROP TYPE "${object.name}";`;
     }
 
     default: {
       return false;
     }
   }
-};
-
-const asEnumCreate = ({ name, values }: DatabaseEnum): string => {
-  return `CREATE TYPE "${name}" AS ENUM (${values.map((value) => `'${value}'`)});`;
-};
-
-const asEnumDrop = (enumName: string): string => {
-  return `DROP TYPE "${enumName}";`;
 };

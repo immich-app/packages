@@ -24,20 +24,20 @@ export const readConstraints: Reader = async (ctx, db) => {
       'pg_constraint.confupdtype as update_action',
       'pg_constraint.confdeltype as delete_action',
       // 'pg_constraint.oid as constraint_id',
-      eb
-        .selectFrom('pg_attribute')
-        // matching table for PK, FK, and UQ
-        .whereRef('pg_attribute.attrelid', '=', 'pg_constraint.conrelid')
-        .whereRef('pg_attribute.attnum', '=', sql`any("pg_constraint"."conkey")`)
-        .select((eb) => eb.fn<string[]>('json_agg', ['pg_attribute.attname']).as('column_name'))
-        .as('column_names'),
-      eb
-        .selectFrom('pg_attribute')
-        // matching foreign table for FK
-        .whereRef('pg_attribute.attrelid', '=', 'pg_constraint.confrelid')
-        .whereRef('pg_attribute.attnum', '=', sql`any("pg_constraint"."confkey")`)
-        .select((eb) => eb.fn<string[]>('json_agg', ['pg_attribute.attname']).as('column_name'))
-        .as('reference_column_names'),
+      sql<string[]>`
+        (
+          SELECT json_agg("a"."attname" ORDER BY "k"."ord")
+          FROM unnest("pg_constraint"."conkey") WITH ORDINALITY AS k(attnum, ord)
+          JOIN pg_attribute a ON "a"."attrelid" = "pg_constraint"."conrelid" AND "a"."attnum" = "k"."attnum"
+        )
+      `.as('column_names'),
+      sql<string[]>`
+        (
+          SELECT json_agg("a"."attname" ORDER BY "k"."ord")
+          FROM unnest("pg_constraint"."confkey") WITH ORDINALITY AS k(attnum, ord)
+          JOIN pg_attribute a ON "a"."attrelid" = "pg_constraint"."confrelid" AND "a"."attnum" = "k"."attnum"
+        )
+      `.as('reference_column_names'),
       eb.fn<string>('pg_get_constraintdef', ['pg_constraint.oid']).as('expression'),
     ])
     .where('pg_namespace.nspname', '=', ctx.schemaName)

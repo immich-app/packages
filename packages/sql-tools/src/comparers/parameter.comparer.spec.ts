@@ -16,8 +16,7 @@ describe('compareParameters', () => {
       expect(compareParameters().onExtra(testParameter)).toEqual([
         {
           type: 'ParameterReset',
-          databaseName: 'immich',
-          parameterName: 'test',
+          object: testParameter,
           reason: Reason.MissingInSource,
         },
       ]);
@@ -29,7 +28,7 @@ describe('compareParameters', () => {
       expect(compareParameters().onMissing(testParameter)).toEqual([
         {
           type: 'ParameterSet',
-          parameter: testParameter,
+          object: testParameter,
           reason: Reason.MissingInTarget,
         },
       ]);

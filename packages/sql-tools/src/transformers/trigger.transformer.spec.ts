@@ -1,5 +1,6 @@
 import { BaseContext } from 'src/contexts/base-context';
 import { transformTriggers } from 'src/transformers/trigger.transformer';
+import { DatabaseTrigger } from 'src/types';
 import { describe, expect, it } from 'vitest';
 
 const ctx = new BaseContext({});
@@ -10,7 +11,7 @@ describe(transformTriggers.name, () => {
       expect(
         transformTriggers(ctx, {
           type: 'TriggerCreate',
-          trigger: {
+          object: {
             name: 'trigger1',
             tableName: 'table1',
             timing: 'before',
@@ -33,7 +34,7 @@ describe(transformTriggers.name, () => {
       expect(
         transformTriggers(ctx, {
           type: 'TriggerCreate',
-          trigger: {
+          object: {
             name: 'trigger1',
             tableName: 'table1',
             timing: 'before',
@@ -56,7 +57,7 @@ describe(transformTriggers.name, () => {
       expect(
         transformTriggers(ctx, {
           type: 'TriggerCreate',
-          trigger: {
+          object: {
             name: 'trigger1',
             tableName: 'table1',
             timing: 'before',
@@ -84,8 +85,10 @@ describe(transformTriggers.name, () => {
       expect(
         transformTriggers(ctx, {
           type: 'TriggerDrop',
-          tableName: 'table1',
-          triggerName: 'trigger1',
+          object: {
+            name: 'trigger1',
+            tableName: 'table1',
+          } as DatabaseTrigger,
           reason: 'unknown',
         }),
       ).toEqual(`DROP TRIGGER "trigger1" ON "table1";`);

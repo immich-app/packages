@@ -34,6 +34,8 @@ export default defineConfig([
   },
   {
     rules: {
+      curly: 2,
+      'no-shadow': 'error',
       'unicorn/prevent-abbreviations': 'off',
       'unicorn/filename-case': 'off',
       'unicorn/no-null': 'off',
@@ -43,6 +45,16 @@ export default defineConfig([
       'unicorn/import-style': 'off',
       'unicorn/prefer-structured-clone': 'off',
       'unicorn/no-for-loop': 'off',
+      'unicorn/no-process-exit': 'off',
+      'prettier/prettier': 0,
+      'object-shorthand': ['error', 'always'],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
     },
   },
   {

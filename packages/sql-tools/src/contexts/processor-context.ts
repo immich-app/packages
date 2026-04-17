@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-function-type */
 import { BaseContext } from 'src/contexts/base-context';
-import { ColumnOptions } from 'src/decorators/column.decorator';
 import { TableOptions } from 'src/decorators/table.decorator';
 import { DatabaseColumn, DatabaseTable, SchemaFromCodeOptions } from 'src/types';
 
@@ -53,7 +52,10 @@ export class ProcessorContext extends BaseContext {
     return { table, column };
   }
 
-  addColumn(table: DatabaseTable, column: DatabaseColumn, options: ColumnOptions, propertyName: string | symbol) {
+  addColumn(table: DatabaseTable, input: DatabaseColumn, propertyName: string | symbol) {
+    const column = Object.fromEntries(
+      Object.entries(input).filter(([_key, value]) => value !== undefined),
+    ) as DatabaseColumn;
     table.columns.push(column);
     const tableMetadata = this.getTableMetadata(table);
     tableMetadata.methodToColumn.set(propertyName, column);

@@ -1,6 +1,6 @@
 import { BaseContext } from 'src/contexts/base-context';
 import { transformConstraints } from 'src/transformers/constraint.transformer';
-import { ConstraintType } from 'src/types';
+import { ConstraintType, DatabasePrimaryKeyConstraint } from 'src/types';
 import { describe, expect, it } from 'vitest';
 
 const ctx = new BaseContext({});
@@ -12,7 +12,7 @@ describe(transformConstraints.name, () => {
         expect(
           transformConstraints(ctx, {
             type: 'ConstraintAdd',
-            constraint: {
+            object: {
               type: ConstraintType.PRIMARY_KEY,
               name: 'PK_test',
               tableName: 'table1',
@@ -30,7 +30,7 @@ describe(transformConstraints.name, () => {
         expect(
           transformConstraints(ctx, {
             type: 'ConstraintAdd',
-            constraint: {
+            object: {
               type: ConstraintType.FOREIGN_KEY,
               name: 'FK_test',
               tableName: 'table1',
@@ -52,7 +52,7 @@ describe(transformConstraints.name, () => {
         expect(
           transformConstraints(ctx, {
             type: 'ConstraintAdd',
-            constraint: {
+            object: {
               type: ConstraintType.UNIQUE,
               name: 'UQ_test',
               tableName: 'table1',
@@ -70,7 +70,7 @@ describe(transformConstraints.name, () => {
         expect(
           transformConstraints(ctx, {
             type: 'ConstraintAdd',
-            constraint: {
+            object: {
               type: ConstraintType.CHECK,
               name: 'CHK_test',
               tableName: 'table1',
@@ -89,8 +89,10 @@ describe(transformConstraints.name, () => {
       expect(
         transformConstraints(ctx, {
           type: 'ConstraintDrop',
-          tableName: 'table1',
-          constraintName: 'PK_test',
+          object: {
+            name: 'PK_test',
+            tableName: 'table1',
+          } as DatabasePrimaryKeyConstraint,
           reason: 'unknown',
         }),
       ).toEqual(`ALTER TABLE "table1" DROP CONSTRAINT "PK_test";`);

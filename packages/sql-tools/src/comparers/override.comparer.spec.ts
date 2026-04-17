@@ -14,7 +14,7 @@ describe('compareOverrides', () => {
       expect(compareOverrides().onExtra(testOverride)).toEqual([
         {
           type: 'OverrideDrop',
-          overrideName: 'test',
+          object: testOverride,
           reason: Reason.MissingInSource,
         },
       ]);
@@ -26,7 +26,7 @@ describe('compareOverrides', () => {
       expect(compareOverrides().onMissing(testOverride)).toEqual([
         {
           type: 'OverrideCreate',
-          override: testOverride,
+          object: testOverride,
           reason: Reason.MissingInTarget,
         },
       ]);
@@ -59,8 +59,8 @@ describe('compareOverrides', () => {
       };
       expect(compareOverrides().onCompare(source, target)).toEqual([
         {
-          override: source,
           type: 'OverrideUpdate',
+          object: source,
           reason: expect.stringContaining('value is different'),
         },
       ]);

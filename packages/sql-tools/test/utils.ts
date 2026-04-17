@@ -5,7 +5,7 @@ import { join } from 'node:path';
 import { createPostgres } from 'src/connections/postgres-connection';
 import { DatabaseConnectionParams } from 'src/types';
 
-export const loadFixtures = (directory: string) => {
+export const getDirectoryFiles = (directory: string) => {
   const fixtures: Array<[string, string]> = [];
   for (const file of readdirSync(directory, { withFileTypes: true })) {
     if (file.isDirectory()) {
@@ -43,6 +43,7 @@ export const getKyselyDB = async <T = unknown>(suffix?: string) => {
   const connection = { connectionType: 'url', url: withDatabase(testUrl, dbName) } as DatabaseConnectionParams;
 
   return {
+    name: dbName,
     connection,
     kysely: new Kysely<T>({ dialect: new PostgresJSDialect({ postgres: createPostgres({ connection }) }) }),
   };

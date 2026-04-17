@@ -25,14 +25,15 @@ export const readIndexes: Reader = async (ctx, db) => {
       'a.amname as using',
       eb.fn<string>('pg_get_expr', ['ix.indexprs', 'ix.indrelid']).as('expression'),
       eb.fn<string>('pg_get_expr', ['ix.indpred', 'ix.indrelid']).as('where'),
-      eb
-        .selectFrom('pg_attribute as a')
-        .where('t.relkind', '=', sql.lit('r'))
-        .whereRef('a.attrelid', '=', 't.oid')
-        // list of columns numbers in the index
-        .whereRef('a.attnum', '=', sql`any("ix"."indkey")`)
-        .select((eb) => eb.fn<string[]>('json_agg', ['a.attname']).as('column_name'))
-        .as('column_names'),
+      // preserve order from ix.indkey when mapping to column names
+      sql<string[]>`
+        (
+                SELECT json_agg("a"."attname" ORDER BY "k"."ord")
+                FROM unnest("ix"."indkey") WITH ORDINALITY AS k(attnum, ord)
+                JOIN pg_attribute a ON "a"."attrelid" = "t"."oid" AND "a"."attnum" = "k"."attnum"
+                WHERE "t"."relkind" = 'r'
+              )
+      `.as('column_names'),
     ])
     .where('pg_namespace.nspname', '=', ctx.schemaName)
     .where('ix.indisprimary', '=', sql.lit(false))

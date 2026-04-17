@@ -9,8 +9,8 @@ export type ForeignKeyColumnOptions = ColumnBaseOptions & {
   constraintName?: string;
 };
 
-export const ForeignKeyColumn = (target: () => Function, options: ForeignKeyColumnOptions): PropertyDecorator => {
+export const ForeignKeyColumn = (target: () => Function, options?: ForeignKeyColumnOptions): PropertyDecorator => {
   return (object: object, propertyName: string | symbol) => {
-    register({ type: 'foreignKeyColumn', item: { object, propertyName, options, target } });
+    register({ type: 'foreignKeyColumn', item: { object, propertyName, options: options ?? {}, target } });
   };
 };

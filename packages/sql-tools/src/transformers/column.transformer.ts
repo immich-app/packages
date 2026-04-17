@@ -2,22 +2,22 @@ import { asColumnComment, getColumnModifiers, getColumnType } from 'src/helpers'
 import { SqlTransformer } from 'src/transformers/types';
 import { ColumnChanges, DatabaseColumn } from 'src/types';
 
-export const transformColumns: SqlTransformer = (ctx, item) => {
-  switch (item.type) {
+export const transformColumns: SqlTransformer = (ctx, { type, object }) => {
+  switch (type) {
     case 'ColumnAdd': {
-      return asColumnAdd(item.column);
+      return asColumnAdd(object);
     }
 
     case 'ColumnAlter': {
-      return asColumnAlter(item.tableName, item.columnName, item.changes);
+      return asColumnAlter(object.new.tableName, object.new.name, object.changes);
     }
 
     case 'ColumnRename': {
-      return `ALTER TABLE "${item.tableName}" RENAME COLUMN "${item.oldName}" TO "${item.newName}";`;
+      return `ALTER TABLE "${object.new.tableName}" RENAME COLUMN "${object.old.name}" TO "${object.new.name}";`;
     }
 
     case 'ColumnDrop': {
-      return `ALTER TABLE "${item.tableName}" DROP COLUMN "${item.columnName}";`;
+      return `ALTER TABLE "${object.tableName}" DROP COLUMN "${object.name}";`;
     }
 
     default: {

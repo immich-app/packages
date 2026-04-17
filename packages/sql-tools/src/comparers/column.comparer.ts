@@ -20,29 +20,10 @@ export const compareColumns = () =>
       ]);
     },
     onRename: (source, target) => [
-      {
-        type: 'ColumnRename',
-        tableName: source.tableName,
-        oldName: target.name,
-        newName: source.name,
-        reason: Reason.Rename,
-      },
+      { type: 'ColumnRename', object: { old: target, new: source }, reason: Reason.Rename },
     ],
-    onMissing: (source) => [
-      {
-        type: 'ColumnAdd',
-        column: source,
-        reason: Reason.MissingInTarget,
-      },
-    ],
-    onExtra: (target) => [
-      {
-        type: 'ColumnDrop',
-        tableName: target.tableName,
-        columnName: target.name,
-        reason: Reason.MissingInSource,
-      },
-    ],
+    onMissing: (source) => [{ type: 'ColumnAdd', object: source, reason: Reason.MissingInTarget }],
+    onExtra: (target) => [{ type: 'ColumnDrop', object: target, reason: Reason.MissingInSource }],
     onCompare: (source, target) => {
       const sourceType = getColumnType(source);
       const targetType = getColumnType(target);
@@ -58,10 +39,12 @@ export const compareColumns = () =>
       if (source.nullable !== target.nullable) {
         items.push({
           type: 'ColumnAlter',
-          tableName: source.tableName,
-          columnName: source.name,
-          changes: {
-            nullable: source.nullable,
+          object: {
+            old: target,
+            new: source,
+            changes: {
+              nullable: source.nullable,
+            },
           },
           reason: `nullable is different (${source.nullable} vs ${target.nullable})`,
         });
@@ -70,10 +53,12 @@ export const compareColumns = () =>
       if (!isDefaultEqual(source, target)) {
         items.push({
           type: 'ColumnAlter',
-          tableName: source.tableName,
-          columnName: source.name,
-          changes: {
-            default: String(source.default ?? 'NULL'),
+          object: {
+            old: target,
+            new: source,
+            changes: {
+              default: String(source.default ?? 'NULL'),
+            },
           },
           reason: `default is different (${source.default ?? 'null'} vs ${target.default})`,
         });
@@ -82,10 +67,12 @@ export const compareColumns = () =>
       if (source.comment !== target.comment) {
         items.push({
           type: 'ColumnAlter',
-          tableName: source.tableName,
-          columnName: source.name,
-          changes: {
-            comment: String(source.comment),
+          object: {
+            old: target,
+            new: source,
+            changes: {
+              comment: String(source.comment),
+            },
           },
           reason: `comment is different (${source.comment} vs ${target.comment})`,
         });
@@ -97,12 +84,7 @@ export const compareColumns = () =>
 
 const dropAndRecreateColumn = (source: DatabaseColumn, target: DatabaseColumn, reason: string): SchemaDiff[] => {
   return [
-    {
-      type: 'ColumnDrop',
-      tableName: target.tableName,
-      columnName: target.name,
-      reason,
-    },
-    { type: 'ColumnAdd', column: source, reason },
+    { type: 'ColumnDrop', object: target, reason },
+    { type: 'ColumnAdd', object: source, reason },
   ];
 };
