@@ -361,6 +361,8 @@ export type ColumnType =
   | 'character varying'
   | 'date'
   | 'double precision'
+  | '"char"'
+  | 'smallint'
   | 'integer'
   | 'jsonb'
   | 'polygon'
