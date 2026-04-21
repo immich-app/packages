@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/immich-app/packages/compare/sql-tools-v0.5.0...sql-tools-v0.5.1) (2026-04-21)
+
+
+### Bug Fixes
+
+* migration by ignoring extra extensions ([#80](https://github.com/immich-app/packages/issues/80)) ([7eacc26](https://github.com/immich-app/packages/commit/7eacc2639c1c62bc77605676a0f5204d6cc0bd74))
+
 ## [0.5.0](https://github.com/immich-app/packages/compare/sql-tools-v0.4.2...sql-tools-v0.5.0) (2026-04-21)
 
 
