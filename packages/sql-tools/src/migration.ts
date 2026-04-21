@@ -192,6 +192,7 @@ export class Migrator {
       tables: { ignoreExtra: true },
       functions: { ignoreExtra: false },
       parameters: { ignoreExtra: true },
+      extensions: { ignoreExtra: true },
     });
     const down = schemaDiff(target, source, {
       tables: { ignoreExtra: false, ignoreMissing: true },
