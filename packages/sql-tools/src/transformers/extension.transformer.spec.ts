@@ -10,7 +10,7 @@ describe(transformExtensions.name, () => {
       expect(
         transformExtensions(ctx, {
           type: 'ExtensionDrop',
-          extensionName: 'cube',
+          object: { name: 'cube', synchronize: true },
           reason: 'unknown',
         }),
       ).toEqual(`DROP EXTENSION "cube";`);
@@ -22,10 +22,7 @@ describe(transformExtensions.name, () => {
       expect(
         transformExtensions(ctx, {
           type: 'ExtensionCreate',
-          extension: {
-            name: 'cube',
-            synchronize: true,
-          },
+          object: { name: 'cube', synchronize: true },
           reason: 'unknown',
         }),
       ).toEqual(`CREATE EXTENSION IF NOT EXISTS "cube";`);

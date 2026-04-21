@@ -1,21 +1,8 @@
 import { Comparer, DatabaseTrigger, Reason } from 'src/types';
 
 export const compareTriggers = (): Comparer<DatabaseTrigger> => ({
-  onMissing: (source) => [
-    {
-      type: 'TriggerCreate',
-      trigger: source,
-      reason: Reason.MissingInTarget,
-    },
-  ],
-  onExtra: (target) => [
-    {
-      type: 'TriggerDrop',
-      tableName: target.tableName,
-      triggerName: target.name,
-      reason: Reason.MissingInSource,
-    },
-  ],
+  onMissing: (source) => [{ type: 'TriggerCreate', object: source, reason: Reason.MissingInTarget }],
+  onExtra: (target) => [{ type: 'TriggerDrop', object: target, reason: Reason.MissingInSource }],
   onCompare: (source, target) => {
     let reason = '';
     if (source.functionName !== target.functionName) {
@@ -33,7 +20,7 @@ export const compareTriggers = (): Comparer<DatabaseTrigger> => ({
     }
 
     if (reason) {
-      return [{ type: 'TriggerCreate', trigger: source, reason }];
+      return [{ type: 'TriggerCreate', object: source, reason }];
     }
 
     return [];

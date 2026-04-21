@@ -1,5 +1,4 @@
 import { DefaultNamingStrategy } from 'src/naming/default.naming';
-import { HashNamingStrategy } from 'src/naming/hash.naming';
 import { NamingInterface, NamingItem } from 'src/naming/naming.interface';
 import {
   BaseContextOptions,
@@ -20,20 +19,12 @@ const isNamingInterface = (strategy: string | NamingInterface): strategy is Nami
   return typeof strategy === 'object' && typeof strategy.getName === 'function';
 };
 
-const asNamingStrategy = (strategy: 'hash' | 'default' | NamingInterface): NamingInterface => {
+const asNamingStrategy = (strategy: 'default' | NamingInterface): NamingInterface => {
   if (isNamingInterface(strategy)) {
     return strategy;
   }
 
-  switch (strategy) {
-    case 'hash': {
-      return new HashNamingStrategy();
-    }
-
-    default: {
-      return new DefaultNamingStrategy();
-    }
-  }
+  return new DefaultNamingStrategy();
 };
 
 const asUuidFunctionStrategy = (uuidFunction: string | UuidFunctionFactory): UuidFunctionFactory => {
@@ -65,7 +56,7 @@ export class BaseContext {
     this.databaseName = options.databaseName ?? 'postgres';
     this.schemaName = options.schemaName ?? 'public';
     this.overrideTableName = options.overrideTableName ?? 'migration_overrides';
-    this.namingStrategy = asNamingStrategy(options.namingStrategy ?? 'hash');
+    this.namingStrategy = asNamingStrategy(options.namingStrategy ?? 'default');
     this.uuidFunctionFactory = asUuidFunctionStrategy(options.uuidFunction ?? defaultUuidFunction);
     this.outputTarget = options.outputTarget ?? 'javascript';
   }

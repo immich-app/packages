@@ -48,7 +48,7 @@ export type BaseContextOptions = {
   databaseName?: string;
   schemaName?: string;
   overrideTableName?: string;
-  namingStrategy?: 'default' | 'hash' | NamingInterface;
+  namingStrategy?: 'default' | NamingInterface;
   uuidFunction?: string | UuidFunctionFactory;
   outputTarget?: OutputTarget;
 };
@@ -495,6 +495,8 @@ export type DatabaseForeignKeyConstraint = ColumBasedConstraint & {
   referenceColumnNames: string[];
   onUpdate?: ActionType;
   onDelete?: ActionType;
+  /** table create sql should not inline this constraint */
+  deferred?: boolean;
   synchronize: boolean;
 };
 
@@ -536,33 +538,34 @@ export type DatabaseIndex = {
   synchronize: boolean;
 };
 
-export type SchemaDiff = { reason: string } & (
-  | { type: 'ExtensionCreate'; extension: DatabaseExtension }
-  | { type: 'ExtensionDrop'; extensionName: string }
-  | { type: 'FunctionCreate'; function: DatabaseFunction }
-  | { type: 'FunctionDrop'; functionName: string }
-  | { type: 'TableCreate'; table: DatabaseTable }
-  | { type: 'TableDrop'; tableName: string }
-  | { type: 'ColumnAdd'; column: DatabaseColumn }
-  | { type: 'ColumnRename'; tableName: string; oldName: string; newName: string }
-  | { type: 'ColumnAlter'; tableName: string; columnName: string; changes: ColumnChanges }
-  | { type: 'ColumnDrop'; tableName: string; columnName: string }
-  | { type: 'ConstraintAdd'; constraint: DatabaseConstraint }
-  | { type: 'ConstraintRename'; tableName: string; oldName: string; newName: string }
-  | { type: 'ConstraintDrop'; tableName: string; constraintName: string }
-  | { type: 'IndexCreate'; index: DatabaseIndex }
-  | { type: 'IndexRename'; tableName: string; oldName: string; newName: string }
-  | { type: 'IndexDrop'; indexName: string }
-  | { type: 'TriggerCreate'; trigger: DatabaseTrigger }
-  | { type: 'TriggerDrop'; tableName: string; triggerName: string }
-  | { type: 'ParameterSet'; parameter: DatabaseParameter }
-  | { type: 'ParameterReset'; databaseName: string; parameterName: string }
-  | { type: 'EnumCreate'; enum: DatabaseEnum }
-  | { type: 'EnumDrop'; enumName: string }
-  | { type: 'OverrideCreate'; override: DatabaseOverride }
-  | { type: 'OverrideUpdate'; override: DatabaseOverride }
-  | { type: 'OverrideDrop'; overrideName: string }
-);
+export type SchemaItem =
+  | { type: 'ExtensionCreate'; object: DatabaseExtension }
+  | { type: 'ExtensionDrop'; object: DatabaseExtension }
+  | { type: 'FunctionCreate'; object: DatabaseFunction }
+  | { type: 'FunctionDrop'; object: DatabaseFunction }
+  | { type: 'TableCreate'; object: DatabaseTable }
+  | { type: 'TableDrop'; object: DatabaseTable }
+  | { type: 'ColumnAdd'; object: DatabaseColumn }
+  | { type: 'ColumnRename'; object: { old: DatabaseColumn; new: DatabaseColumn } }
+  | { type: 'ColumnAlter'; object: { old: DatabaseColumn; new: DatabaseColumn; changes: ColumnChanges } }
+  | { type: 'ColumnDrop'; object: DatabaseColumn }
+  | { type: 'ConstraintAdd'; object: DatabaseConstraint }
+  | { type: 'ConstraintRename'; object: { old: DatabaseConstraint; new: DatabaseConstraint } }
+  | { type: 'ConstraintDrop'; object: DatabaseConstraint }
+  | { type: 'IndexCreate'; object: DatabaseIndex }
+  | { type: 'IndexRename'; object: { old: DatabaseIndex; new: DatabaseIndex } }
+  | { type: 'IndexDrop'; object: DatabaseIndex }
+  | { type: 'TriggerCreate'; object: DatabaseTrigger }
+  | { type: 'TriggerDrop'; object: DatabaseTrigger }
+  | { type: 'ParameterSet'; object: DatabaseParameter }
+  | { type: 'ParameterReset'; object: DatabaseParameter }
+  | { type: 'EnumCreate'; object: DatabaseEnum }
+  | { type: 'EnumDrop'; object: DatabaseEnum }
+  | { type: 'OverrideCreate'; object: DatabaseOverride }
+  | { type: 'OverrideUpdate'; object: DatabaseOverride }
+  | { type: 'OverrideDrop'; object: DatabaseOverride };
+
+export type SchemaDiff = { reason: string } & SchemaItem;
 
 export type CompareFunction<T> = (source: T, target: T) => SchemaDiff[];
 export type Comparer<T> = {

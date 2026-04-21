@@ -1,5 +1,6 @@
 import { BaseContext } from 'src/contexts/base-context';
 import { transformIndexes } from 'src/transformers/index.transformer';
+import { DatabaseIndex } from 'src/types';
 import { describe, expect, it } from 'vitest';
 
 const ctx = new BaseContext({});
@@ -10,7 +11,7 @@ describe(transformIndexes.name, () => {
       expect(
         transformIndexes(ctx, {
           type: 'IndexCreate',
-          index: {
+          object: {
             name: 'IDX_test',
             tableName: 'table1',
             columnNames: ['column1'],
@@ -26,7 +27,7 @@ describe(transformIndexes.name, () => {
       expect(
         transformIndexes(ctx, {
           type: 'IndexCreate',
-          index: {
+          object: {
             name: 'IDX_test',
             tableName: 'table1',
             columnNames: ['column1'],
@@ -42,7 +43,7 @@ describe(transformIndexes.name, () => {
       expect(
         transformIndexes(ctx, {
           type: 'IndexCreate',
-          index: {
+          object: {
             name: 'IDX_test',
             tableName: 'table1',
             unique: false,
@@ -58,7 +59,7 @@ describe(transformIndexes.name, () => {
       expect(
         transformIndexes(ctx, {
           type: 'IndexCreate',
-          index: {
+          object: {
             name: 'IDX_test',
             tableName: 'table1',
             columnNames: ['id'],
@@ -75,7 +76,7 @@ describe(transformIndexes.name, () => {
       expect(
         transformIndexes(ctx, {
           type: 'IndexCreate',
-          index: {
+          object: {
             name: 'IDX_test',
             tableName: 'table1',
             unique: false,
@@ -94,7 +95,7 @@ describe(transformIndexes.name, () => {
       expect(
         transformIndexes(ctx, {
           type: 'IndexDrop',
-          indexName: 'IDX_test',
+          object: { name: 'IDX_test' } as DatabaseIndex,
           reason: 'unknown',
         }),
       ).toEqual(`DROP INDEX "IDX_test";`);

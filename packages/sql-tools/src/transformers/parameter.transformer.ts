@@ -1,14 +1,14 @@
 import { SqlTransformer } from 'src/transformers/types';
 import { DatabaseParameter } from 'src/types';
 
-export const transformParameters: SqlTransformer = (ctx, item) => {
-  switch (item.type) {
+export const transformParameters: SqlTransformer = (ctx, { object, type }) => {
+  switch (type) {
     case 'ParameterSet': {
-      return asParameterSet(item.parameter);
+      return asParameterSet(object);
     }
 
     case 'ParameterReset': {
-      return asParameterReset(item.databaseName, item.parameterName);
+      return asParameterReset(object.databaseName, object.name);
     }
 
     default: {

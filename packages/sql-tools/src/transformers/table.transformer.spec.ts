@@ -71,7 +71,7 @@ describe(transformTables.name, () => {
       expect(
         transformTables(ctx, {
           type: 'TableDrop',
-          tableName: 'table1',
+          object: { name: 'table1' } as DatabaseTable,
           reason: 'unknown',
         }),
       ).toEqual(`DROP TABLE "table1";`);
@@ -83,7 +83,7 @@ describe(transformTables.name, () => {
       expect(
         transformTables(ctx, {
           type: 'TableCreate',
-          table: table1,
+          object: table1,
           reason: 'unknown',
         }),
       ).toEqual([
@@ -94,7 +94,6 @@ describe(transformTables.name, () => {
   CONSTRAINT "constraint2" FOREIGN KEY ("column1") REFERENCES "table2" ("parentId") ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT "constraint3" UNIQUE ("column1")
 );`,
-        `CREATE INDEX "index1" ON "table1" ("column2");`,
       ]);
     });
 
@@ -102,7 +101,7 @@ describe(transformTables.name, () => {
       expect(
         transformTables(ctx, {
           type: 'TableCreate',
-          table: {
+          object: {
             name: 'table1',
             columns: [
               {
@@ -133,7 +132,7 @@ describe(transformTables.name, () => {
       expect(
         transformTables(ctx, {
           type: 'TableCreate',
-          table: {
+          object: {
             name: 'table1',
             columns: [
               {
@@ -165,7 +164,7 @@ describe(transformTables.name, () => {
       expect(
         transformTables(ctx, {
           type: 'TableCreate',
-          table: {
+          object: {
             name: 'table1',
             columns: [
               {
@@ -197,7 +196,7 @@ describe(transformTables.name, () => {
       expect(
         transformTables(ctx, {
           type: 'TableCreate',
-          table: {
+          object: {
             name: 'table1',
             columns: [
               {

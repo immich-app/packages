@@ -13,8 +13,8 @@ describe('compareFunctions', () => {
     it('should work', () => {
       expect(compareFunctions().onExtra(testFunction)).toEqual([
         {
-          functionName: 'test',
           type: 'FunctionDrop',
+          object: testFunction,
           reason: Reason.MissingInSource,
         },
       ]);
@@ -26,7 +26,7 @@ describe('compareFunctions', () => {
       expect(compareFunctions().onMissing(testFunction)).toEqual([
         {
           type: 'FunctionCreate',
-          function: testFunction,
+          object: testFunction,
           reason: Reason.MissingInTarget,
         },
       ]);
@@ -45,7 +45,7 @@ describe('compareFunctions', () => {
         {
           type: 'FunctionCreate',
           reason: 'function expression has changed (SELECT 1 vs SELECT 2)',
-          function: source,
+          object: source,
         },
       ]);
     });

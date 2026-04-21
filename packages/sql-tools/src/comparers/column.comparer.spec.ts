@@ -17,9 +17,8 @@ describe('compareColumns', () => {
     it('should work', () => {
       expect(compareColumns().onExtra(testColumn)).toEqual([
         {
-          tableName: 'table1',
-          columnName: 'test',
           type: 'ColumnDrop',
+          object: testColumn,
           reason: Reason.MissingInSource,
         },
       ]);
@@ -31,7 +30,7 @@ describe('compareColumns', () => {
       expect(compareColumns().onMissing(testColumn)).toEqual([
         {
           type: 'ColumnAdd',
-          column: testColumn,
+          object: testColumn,
           reason: Reason.MissingInTarget,
         },
       ]);
@@ -48,17 +47,8 @@ describe('compareColumns', () => {
       const target: DatabaseColumn = { ...testColumn, type: 'text' };
       const reason = 'column type is different (character varying vs text)';
       expect(compareColumns().onCompare(source, target)).toEqual([
-        {
-          columnName: 'test',
-          tableName: 'table1',
-          type: 'ColumnDrop',
-          reason,
-        },
-        {
-          type: 'ColumnAdd',
-          column: source,
-          reason,
-        },
+        { type: 'ColumnDrop', object: target, reason },
+        { type: 'ColumnAdd', object: source, reason },
       ]);
     });
 
@@ -68,11 +58,13 @@ describe('compareColumns', () => {
       const reason = `default is different (null vs '')`;
       expect(compareColumns().onCompare(source, target)).toEqual([
         {
-          columnName: 'test',
-          tableName: 'table1',
           type: 'ColumnAlter',
-          changes: {
-            default: 'NULL',
+          object: {
+            old: target,
+            new: source,
+            changes: {
+              default: 'NULL',
+            },
           },
           reason,
         },
@@ -85,11 +77,13 @@ describe('compareColumns', () => {
       const reason = 'comment is different (new comment vs old comment)';
       expect(compareColumns().onCompare(source, target)).toEqual([
         {
-          columnName: 'test',
-          tableName: 'table1',
           type: 'ColumnAlter',
-          changes: {
-            comment: 'new comment',
+          object: {
+            old: target,
+            new: source,
+            changes: {
+              comment: 'new comment',
+            },
           },
           reason,
         },

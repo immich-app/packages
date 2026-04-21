@@ -16,7 +16,7 @@ describe('compareIndexes', () => {
       expect(compareIndexes().onExtra(testIndex)).toEqual([
         {
           type: 'IndexDrop',
-          indexName: 'test',
+          object: testIndex,
           reason: Reason.MissingInSource,
         },
       ]);
@@ -28,7 +28,7 @@ describe('compareIndexes', () => {
       expect(compareIndexes().onMissing(testIndex)).toEqual([
         {
           type: 'IndexCreate',
-          index: testIndex,
+          object: testIndex,
           reason: Reason.MissingInTarget,
         },
       ]);
@@ -57,13 +57,13 @@ describe('compareIndexes', () => {
       };
       expect(compareIndexes().onCompare(source, target)).toEqual([
         {
-          indexName: 'test',
           type: 'IndexDrop',
+          object: target,
           reason: 'columns are different (column1 vs column1,column2)',
         },
         {
           type: 'IndexCreate',
-          index: source,
+          object: source,
           reason: 'columns are different (column1 vs column1,column2)',
         },
       ]);

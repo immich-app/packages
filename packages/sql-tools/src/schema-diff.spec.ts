@@ -200,7 +200,7 @@ describe(schemaDiff.name, () => {
         expect(diff.items).toHaveLength(1);
         expect(diff.items[0]).toEqual({
           type: 'TableCreate',
-          table: {
+          object: {
             name: 'table1',
             columns: [column],
             constraints: [],
@@ -226,7 +226,7 @@ describe(schemaDiff.name, () => {
         expect(diff.items).toHaveLength(1);
         expect(diff.items[0]).toEqual({
           type: 'TableDrop',
-          tableName: 'table1',
+          object: expect.objectContaining({ name: 'table1' }),
           reason: 'missing in source',
         });
       });
@@ -266,7 +266,7 @@ describe(schemaDiff.name, () => {
         expect(diff.items).toEqual([
           {
             type: 'ColumnAdd',
-            column: {
+            object: {
               tableName: 'table1',
               isArray: false,
               primary: false,
@@ -300,8 +300,7 @@ describe(schemaDiff.name, () => {
         expect(diff.items).toEqual([
           {
             type: 'ColumnDrop',
-            tableName: 'table1',
-            columnName: 'column2',
+            object: expect.objectContaining({ name: 'column2', tableName: 'table1' }),
             reason: 'missing in source',
           },
         ]);
@@ -310,18 +309,17 @@ describe(schemaDiff.name, () => {
 
     describe('nullable', () => {
       it('should make a column nullable', () => {
-        const diff = schemaDiff(
-          fromColumn({ name: 'column1', nullable: true }),
-          fromColumn({ name: 'column1', nullable: false }),
-        );
+        const source = { name: 'column1', nullable: true };
+        const target = { name: 'column1', nullable: false };
+        const diff = schemaDiff(fromColumn(source), fromColumn(target));
 
         expect(diff.items).toEqual([
           {
             type: 'ColumnAlter',
-            tableName: 'table1',
-            columnName: 'column1',
-            changes: {
-              nullable: true,
+            object: {
+              old: expect.objectContaining(target),
+              new: expect.objectContaining(source),
+              changes: { nullable: true },
             },
             reason: 'nullable is different (true vs false)',
           },
@@ -329,18 +327,17 @@ describe(schemaDiff.name, () => {
       });
 
       it('should make a column non-nullable', () => {
-        const diff = schemaDiff(
-          fromColumn({ name: 'column1', nullable: false }),
-          fromColumn({ name: 'column1', nullable: true }),
-        );
+        const source = { name: 'column1', nullable: false };
+        const target = { name: 'column1', nullable: true };
+        const diff = schemaDiff(fromColumn(source), fromColumn(target));
 
         expect(diff.items).toEqual([
           {
             type: 'ColumnAlter',
-            tableName: 'table1',
-            columnName: 'column1',
-            changes: {
-              nullable: false,
+            object: {
+              old: expect.objectContaining(target),
+              new: expect.objectContaining(source),
+              changes: { nullable: false },
             },
             reason: 'nullable is different (false vs true)',
           },
@@ -350,18 +347,19 @@ describe(schemaDiff.name, () => {
 
     describe('default', () => {
       it('should set a default value to a function', () => {
-        const diff = schemaDiff(
-          fromColumn({ name: 'column1', default: 'uuid_generate_v4()' }),
-          fromColumn({ name: 'column1' }),
-        );
+        const source = { name: 'column1', default: 'uuid_generate_v4()' };
+        const target = { name: 'column1' };
+        const diff = schemaDiff(fromColumn(source), fromColumn(target));
 
         expect(diff.items).toEqual([
           {
             type: 'ColumnAlter',
-            tableName: 'table1',
-            columnName: 'column1',
-            changes: {
-              default: 'uuid_generate_v4()',
+            object: {
+              old: expect.objectContaining(target),
+              new: expect.objectContaining(source),
+              changes: {
+                default: 'uuid_generate_v4()',
+              },
             },
             reason: 'default is different (uuid_generate_v4() vs undefined)',
           },
@@ -414,27 +412,20 @@ describe(schemaDiff.name, () => {
   describe('constraint', () => {
     describe('ConstraintAdd', () => {
       it('should detect a new constraint', () => {
-        const diff = schemaDiff(
-          fromConstraint({
-            name: 'PK_test',
-            type: ConstraintType.PRIMARY_KEY,
-            tableName: 'table1',
-            columnNames: ['id'],
-            synchronize: true,
-          }),
-          fromConstraint(),
-        );
+        const source: DatabaseConstraint = {
+          name: 'PK_test',
+          type: ConstraintType.PRIMARY_KEY,
+          tableName: 'table1',
+          columnNames: ['id'],
+          synchronize: true,
+        };
+
+        const diff = schemaDiff(fromConstraint(source), fromConstraint());
 
         expect(diff.items).toEqual([
           {
             type: 'ConstraintAdd',
-            constraint: {
-              type: ConstraintType.PRIMARY_KEY,
-              name: 'PK_test',
-              columnNames: ['id'],
-              tableName: 'table1',
-              synchronize: true,
-            },
+            object: source,
             reason: 'missing in target',
           },
         ]);
@@ -443,22 +434,19 @@ describe(schemaDiff.name, () => {
 
     describe('ConstraintDrop', () => {
       it('should detect an extra constraint', () => {
-        const diff = schemaDiff(
-          fromConstraint(),
-          fromConstraint({
-            name: 'PK_test',
-            type: ConstraintType.PRIMARY_KEY,
-            tableName: 'table1',
-            columnNames: ['id'],
-            synchronize: true,
-          }),
-        );
+        const target: DatabaseConstraint = {
+          name: 'PK_test',
+          type: ConstraintType.PRIMARY_KEY,
+          tableName: 'table1',
+          columnNames: ['id'],
+          synchronize: true,
+        };
+        const diff = schemaDiff(fromConstraint(), fromConstraint(target));
 
         expect(diff.items).toEqual([
           {
             type: 'ConstraintDrop',
-            tableName: 'table1',
-            constraintName: 'PK_test',
+            object: target,
             reason: 'missing in source',
           },
         ]);
@@ -499,7 +487,7 @@ describe(schemaDiff.name, () => {
       });
 
       it('should drop and recreate when the column changes', () => {
-        const constraint: DatabaseConstraint = {
+        const source: DatabaseConstraint = {
           type: ConstraintType.FOREIGN_KEY,
           name: 'FK_test',
           tableName: 'table1',
@@ -508,37 +496,26 @@ describe(schemaDiff.name, () => {
           referenceColumnNames: ['id'],
           synchronize: true,
         };
+        const target = { ...source, columnNames: ['parentId2'] };
 
-        const diff = schemaDiff(
-          fromConstraint(constraint),
-          fromConstraint({ ...constraint, columnNames: ['parentId2'] }),
-        );
+        const diff = schemaDiff(fromConstraint(source), fromConstraint(target));
 
         expect(diff.items).toEqual([
           {
-            constraintName: 'FK_test',
-            reason: 'columns are different (parentId vs parentId2)',
-            tableName: 'table1',
             type: 'ConstraintDrop',
+            object: target,
+            reason: 'columns are different (parentId vs parentId2)',
           },
           {
-            constraint: {
-              columnNames: ['parentId'],
-              name: 'FK_test',
-              referenceColumnNames: ['id'],
-              referenceTableName: 'table2',
-              synchronize: true,
-              tableName: 'table1',
-              type: 'foreign-key',
-            },
-            reason: 'columns are different (parentId vs parentId2)',
             type: 'ConstraintAdd',
+            object: source,
+            reason: 'columns are different (parentId vs parentId2)',
           },
         ]);
       });
 
       it('should drop and recreate when the ON DELETE action changes', () => {
-        const constraint: DatabaseConstraint = {
+        const source: DatabaseConstraint = {
           type: ConstraintType.FOREIGN_KEY,
           name: 'FK_test',
           tableName: 'table1',
@@ -548,29 +525,19 @@ describe(schemaDiff.name, () => {
           onDelete: ActionType.CASCADE,
           synchronize: true,
         };
-
-        const diff = schemaDiff(fromConstraint(constraint), fromConstraint({ ...constraint, onDelete: undefined }));
+        const target = { ...source, onDelete: undefined };
+        const diff = schemaDiff(fromConstraint(source), fromConstraint(target));
 
         expect(diff.items).toEqual([
           {
-            constraintName: 'FK_test',
-            reason: 'ON DELETE action is different (CASCADE vs NO ACTION)',
-            tableName: 'table1',
             type: 'ConstraintDrop',
+            object: target,
+            reason: 'ON DELETE action is different (CASCADE vs NO ACTION)',
           },
           {
-            constraint: {
-              columnNames: ['parentId'],
-              name: 'FK_test',
-              referenceColumnNames: ['id'],
-              referenceTableName: 'table2',
-              onDelete: ActionType.CASCADE,
-              synchronize: true,
-              tableName: 'table1',
-              type: 'foreign-key',
-            },
-            reason: 'ON DELETE action is different (CASCADE vs NO ACTION)',
             type: 'ConstraintAdd',
+            object: source,
+            reason: 'ON DELETE action is different (CASCADE vs NO ACTION)',
           },
         ]);
       });
@@ -626,7 +593,7 @@ describe(schemaDiff.name, () => {
         expect(diff.items).toEqual([
           {
             type: 'IndexCreate',
-            index: {
+            object: {
               name: 'IDX_test',
               columnNames: ['id'],
               tableName: 'table1',
@@ -641,21 +608,19 @@ describe(schemaDiff.name, () => {
 
     describe('IndexDrop', () => {
       it('should detect an extra index', () => {
-        const diff = schemaDiff(
-          fromIndex(),
-          fromIndex({
-            name: 'IDX_test',
-            unique: true,
-            tableName: 'table1',
-            columnNames: ['id'],
-            synchronize: true,
-          }),
-        );
+        const target = {
+          name: 'IDX_test',
+          unique: true,
+          tableName: 'table1',
+          columnNames: ['id'],
+          synchronize: true,
+        };
+        const diff = schemaDiff(fromIndex(), fromIndex(target));
 
         expect(diff.items).toEqual([
           {
             type: 'IndexDrop',
-            indexName: 'IDX_test',
+            object: target,
             reason: 'missing in source',
           },
         ]);
@@ -663,24 +628,25 @@ describe(schemaDiff.name, () => {
     });
 
     it('should recreate the index if unique changes', () => {
-      const index: DatabaseIndex = {
+      const source: DatabaseIndex = {
         name: 'IDX_test',
         tableName: 'table1',
         columnNames: ['id'],
         unique: true,
         synchronize: true,
       };
-      const diff = schemaDiff(fromIndex(index), fromIndex({ ...index, unique: false }));
+      const target = { ...source, unique: false };
+      const diff = schemaDiff(fromIndex(source), fromIndex(target));
 
       expect(diff.items).toEqual([
         {
           type: 'IndexDrop',
-          indexName: 'IDX_test',
+          object: target,
           reason: 'uniqueness is different (true vs false)',
         },
         {
           type: 'IndexCreate',
-          index,
+          object: source,
           reason: 'uniqueness is different (true vs false)',
         },
       ]);

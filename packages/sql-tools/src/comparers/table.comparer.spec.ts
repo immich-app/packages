@@ -17,7 +17,7 @@ describe('compareParameters', () => {
       expect(compareTables({}).onExtra(testTable)).toEqual([
         {
           type: 'TableDrop',
-          tableName: 'test',
+          object: testTable,
           reason: Reason.MissingInSource,
         },
       ]);
@@ -29,7 +29,7 @@ describe('compareParameters', () => {
       expect(compareTables({}).onMissing(testTable)).toEqual([
         {
           type: 'TableCreate',
-          table: testTable,
+          object: testTable,
           reason: Reason.MissingInTarget,
         },
       ]);

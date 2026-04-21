@@ -2,18 +2,18 @@ import { asColumnList } from 'src/helpers';
 import { SqlTransformer } from 'src/transformers/types';
 import { DatabaseIndex } from 'src/types';
 
-export const transformIndexes: SqlTransformer = (ctx, item) => {
-  switch (item.type) {
+export const transformIndexes: SqlTransformer = (ctx, { object, type }) => {
+  switch (type) {
     case 'IndexCreate': {
-      return asIndexCreate(item.index);
+      return asIndexCreate(object);
     }
 
     case 'IndexRename': {
-      return `ALTER INDEX "${item.oldName}" RENAME TO "${item.newName}";`;
+      return `ALTER INDEX "${object.old.name}" RENAME TO "${object.new.name}";`;
     }
 
     case 'IndexDrop': {
-      return `DROP INDEX "${item.indexName}";`;
+      return `DROP INDEX "${object.name}";`;
     }
 
     default: {

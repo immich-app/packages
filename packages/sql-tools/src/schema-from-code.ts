@@ -15,7 +15,7 @@ export const schemaFromCode = (options: SchemaFromCodeOptions = {}) => {
       processor(ctx, items);
     }
 
-    if (ctx.options.overrides) {
+    if (ctx.options.overrides && ctx.overrides.length > 0) {
       ctx.tables.push({
         name: ctx.overrideTableName,
         columns: [

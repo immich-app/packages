@@ -9,8 +9,8 @@ describe('compareEnums', () => {
     it('should work', () => {
       expect(compareEnums().onExtra(testEnum)).toEqual([
         {
-          enumName: 'test',
           type: 'EnumDrop',
+          object: testEnum,
           reason: Reason.MissingInSource,
         },
       ]);
@@ -22,7 +22,7 @@ describe('compareEnums', () => {
       expect(compareEnums().onMissing(testEnum)).toEqual([
         {
           type: 'EnumCreate',
-          enum: testEnum,
+          object: testEnum,
           reason: Reason.MissingInTarget,
         },
       ]);
@@ -39,13 +39,13 @@ describe('compareEnums', () => {
       const target = { name: 'test', values: ['foo', 'bar', 'world'], synchronize: true };
       expect(compareEnums().onCompare(source, target)).toEqual([
         {
-          enumName: 'test',
           type: 'EnumDrop',
+          object: target,
           reason: 'enum values has changed (foo,bar vs foo,bar,world)',
         },
         {
           type: 'EnumCreate',
-          enum: source,
+          object: source,
           reason: 'enum values has changed (foo,bar vs foo,bar,world)',
         },
       ]);

@@ -37,29 +37,10 @@ export const compareConstraints = (): Comparer<DatabaseConstraint> => ({
     }
   },
   onRename: (source, target) => [
-    {
-      type: 'ConstraintRename',
-      tableName: target.tableName,
-      oldName: target.name,
-      newName: source.name,
-      reason: Reason.Rename,
-    },
+    { type: 'ConstraintRename', object: { old: target, new: source }, reason: Reason.Rename },
   ],
-  onMissing: (source) => [
-    {
-      type: 'ConstraintAdd',
-      constraint: source,
-      reason: Reason.MissingInTarget,
-    },
-  ],
-  onExtra: (target) => [
-    {
-      type: 'ConstraintDrop',
-      tableName: target.tableName,
-      constraintName: target.name,
-      reason: Reason.MissingInSource,
-    },
-  ],
+  onMissing: (source) => [{ type: 'ConstraintAdd', object: source, reason: Reason.MissingInTarget }],
+  onExtra: (target) => [{ type: 'ConstraintDrop', object: target, reason: Reason.MissingInSource }],
   onCompare: (source, target) => {
     switch (source.type) {
       case ConstraintType.PRIMARY_KEY: {
@@ -154,12 +135,7 @@ const dropAndRecreateConstraint = (
   reason: string,
 ): SchemaDiff[] => {
   return [
-    {
-      type: 'ConstraintDrop',
-      tableName: target.tableName,
-      constraintName: target.name,
-      reason,
-    },
-    { type: 'ConstraintAdd', constraint: source, reason },
+    { type: 'ConstraintDrop', object: target, reason },
+    { type: 'ConstraintAdd', object: source, reason },
   ];
 };

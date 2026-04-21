@@ -1,24 +1,22 @@
 import { asJsonString } from 'src/helpers';
 import { SqlTransformer } from 'src/transformers/types';
 
-export const transformOverrides: SqlTransformer = (ctx, item) => {
+export const transformOverrides: SqlTransformer = (ctx, { object, type }) => {
   const tableName = ctx.overrideTableName;
 
   const toJson = (value: unknown) => asJsonString(value, { outputTarget: ctx.outputTarget });
 
-  switch (item.type) {
+  switch (type) {
     case 'OverrideCreate': {
-      const override = item.override;
-      return `INSERT INTO "${tableName}" ("name", "value") VALUES ('${override.name}', ${toJson(override.value)});`;
+      return `INSERT INTO "${tableName}" ("name", "value") VALUES ('${object.name}', ${toJson(object.value)});`;
     }
 
     case 'OverrideUpdate': {
-      const override = item.override;
-      return `UPDATE "${tableName}" SET "value" = ${toJson(override.value)} WHERE "name" = '${override.name}';`;
+      return `UPDATE "${tableName}" SET "value" = ${toJson(object.value)} WHERE "name" = '${object.name}';`;
     }
 
     case 'OverrideDrop': {
-      return `DELETE FROM "${tableName}" WHERE "name" = '${item.overrideName}';`;
+      return `DELETE FROM "${tableName}" WHERE "name" = '${object.name}';`;
     }
 
     default: {

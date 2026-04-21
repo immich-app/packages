@@ -1,9 +1,9 @@
 import { schemaFromCode } from 'src/schema-from-code';
-import { importFixture, loadFixtures } from 'test/utils';
+import { importFixture, getDirectoryFiles } from 'test/utils';
 import { describe, expect, it } from 'vitest';
 
-const fixtures = loadFixtures('test/fixtures');
-const errorFixtures = loadFixtures('test/fixtures/errors');
+const fixtures = getDirectoryFiles('test/fixtures');
+const errorFixtures = getDirectoryFiles('test/fixtures/errors');
 
 describe(schemaFromCode.name, () => {
   it('should work', () => {

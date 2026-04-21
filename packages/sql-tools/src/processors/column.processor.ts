@@ -80,7 +80,6 @@ export const processColumns: Processor = (ctx, items) => {
         identity: options.identity,
         synchronize: options.synchronize ?? true,
       },
-      options,
       propertyName,
     );
   }

@@ -1,14 +1,14 @@
 import { SqlTransformer } from 'src/transformers/types';
 import { DatabaseTrigger } from 'src/types';
 
-export const transformTriggers: SqlTransformer = (ctx, item) => {
-  switch (item.type) {
+export const transformTriggers: SqlTransformer = (ctx, { object, type }) => {
+  switch (type) {
     case 'TriggerCreate': {
-      return asTriggerCreate(item.trigger);
+      return asTriggerCreate(object);
     }
 
     case 'TriggerDrop': {
-      return asTriggerDrop(item.tableName, item.triggerName);
+      return asTriggerDrop(object.tableName, object.name);
     }
 
     default: {

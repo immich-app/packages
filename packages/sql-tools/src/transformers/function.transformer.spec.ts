@@ -1,5 +1,6 @@
 import { BaseContext } from 'src/contexts/base-context';
 import { transformFunctions } from 'src/transformers/function.transformer';
+import { DatabaseFunction } from 'src/types';
 import { describe, expect, it } from 'vitest';
 
 const ctx = new BaseContext({});
@@ -10,7 +11,7 @@ describe(transformFunctions.name, () => {
       expect(
         transformFunctions(ctx, {
           type: 'FunctionDrop',
-          functionName: 'test_func',
+          object: { name: 'test_func' } as DatabaseFunction,
           reason: 'unknown',
         }),
       ).toEqual(`DROP FUNCTION test_func;`);

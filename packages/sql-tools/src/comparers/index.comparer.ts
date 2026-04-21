@@ -9,29 +9,9 @@ export const compareIndexes = (): Comparer<DatabaseIndex> => ({
 
     return asRenameKey([index.tableName, ...(index.columnNames || []), index.unique]);
   },
-  onRename: (source, target) => [
-    {
-      type: 'IndexRename',
-      tableName: source.tableName,
-      oldName: target.name,
-      newName: source.name,
-      reason: Reason.Rename,
-    },
-  ],
-  onMissing: (source) => [
-    {
-      type: 'IndexCreate',
-      index: source,
-      reason: Reason.MissingInTarget,
-    },
-  ],
-  onExtra: (target) => [
-    {
-      type: 'IndexDrop',
-      indexName: target.name,
-      reason: Reason.MissingInSource,
-    },
-  ],
+  onRename: (source, target) => [{ type: 'IndexRename', object: { old: target, new: source }, reason: Reason.Rename }],
+  onMissing: (source) => [{ type: 'IndexCreate', object: source, reason: Reason.MissingInTarget }],
+  onExtra: (target) => [{ type: 'IndexDrop', object: target, reason: Reason.MissingInSource }],
   onCompare: (source, target) => {
     const sourceUsing = source.using ?? 'btree';
     const targetUsing = target.using ?? 'btree';
@@ -52,8 +32,8 @@ export const compareIndexes = (): Comparer<DatabaseIndex> => ({
 
     if (reason) {
       return [
-        { type: 'IndexDrop', indexName: target.name, reason },
-        { type: 'IndexCreate', index: source, reason },
+        { type: 'IndexDrop', object: target, reason },
+        { type: 'IndexCreate', object: source, reason },
       ];
     }
 

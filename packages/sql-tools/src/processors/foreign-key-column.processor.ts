@@ -20,7 +20,7 @@ export const processForeignKeyColumns: Processor = (ctx, items) => {
     }
 
     const columnNames = [column.name];
-    const referenceColumns = referenceTable.columns.filter((column) => column.primary);
+    const referenceColumns = referenceTable.columns.filter(({ primary }) => primary);
 
     // infer FK column type from reference table
     if (referenceColumns.length === 1) {
@@ -28,7 +28,7 @@ export const processForeignKeyColumns: Processor = (ctx, items) => {
     }
 
     const referenceTableName = referenceTable.name;
-    const referenceColumnNames = referenceColumns.map((column) => column.name);
+    const referenceColumnNames = referenceColumns.map(({ name }) => name);
     const name =
       options.constraintName ||
       ctx.getNameFor({

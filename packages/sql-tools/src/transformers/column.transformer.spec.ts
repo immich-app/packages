@@ -1,5 +1,6 @@
 import { BaseContext } from 'src/contexts/base-context';
 import { transformColumns } from 'src/transformers/column.transformer';
+import { DatabaseColumn } from 'src/types';
 import { describe, expect, it } from 'vitest';
 
 const ctx = new BaseContext({});
@@ -10,7 +11,7 @@ describe(transformColumns.name, () => {
       expect(
         transformColumns(ctx, {
           type: 'ColumnAdd',
-          column: {
+          object: {
             name: 'column1',
             tableName: 'table1',
             primary: false,
@@ -28,7 +29,7 @@ describe(transformColumns.name, () => {
       expect(
         transformColumns(ctx, {
           type: 'ColumnAdd',
-          column: {
+          object: {
             name: 'column1',
             tableName: 'table1',
             primary: false,
@@ -46,7 +47,7 @@ describe(transformColumns.name, () => {
       expect(
         transformColumns(ctx, {
           type: 'ColumnAdd',
-          column: {
+          object: {
             name: 'column1',
             tableName: 'table1',
             primary: false,
@@ -65,7 +66,7 @@ describe(transformColumns.name, () => {
       expect(
         transformColumns(ctx, {
           type: 'ColumnAdd',
-          column: {
+          object: {
             name: 'column1',
             tableName: 'table1',
             primary: false,
@@ -85,9 +86,17 @@ describe(transformColumns.name, () => {
       expect(
         transformColumns(ctx, {
           type: 'ColumnAlter',
-          tableName: 'table1',
-          columnName: 'column1',
-          changes: { nullable: true },
+          object: {
+            new: {
+              name: 'column1',
+              tableName: 'table1',
+            } as DatabaseColumn,
+            old: {
+              name: 'column1',
+              tableName: 'table1',
+            } as DatabaseColumn,
+            changes: { nullable: true },
+          },
           reason: 'unknown',
         }),
       ).toEqual([`ALTER TABLE "table1" ALTER COLUMN "column1" DROP NOT NULL;`]);
@@ -97,9 +106,17 @@ describe(transformColumns.name, () => {
       expect(
         transformColumns(ctx, {
           type: 'ColumnAlter',
-          tableName: 'table1',
-          columnName: 'column1',
-          changes: { nullable: false },
+          object: {
+            new: {
+              name: 'column1',
+              tableName: 'table1',
+            } as DatabaseColumn,
+            old: {
+              name: 'column1',
+              tableName: 'table1',
+            } as DatabaseColumn,
+            changes: { nullable: false },
+          },
           reason: 'unknown',
         }),
       ).toEqual([`ALTER TABLE "table1" ALTER COLUMN "column1" SET NOT NULL;`]);
@@ -109,9 +126,17 @@ describe(transformColumns.name, () => {
       expect(
         transformColumns(ctx, {
           type: 'ColumnAlter',
-          tableName: 'table1',
-          columnName: 'column1',
-          changes: { default: 'uuid_generate_v4()' },
+          object: {
+            new: {
+              name: 'column1',
+              tableName: 'table1',
+            } as DatabaseColumn,
+            old: {
+              name: 'column1',
+              tableName: 'table1',
+            } as DatabaseColumn,
+            changes: { default: 'uuid_generate_v4()' },
+          },
           reason: 'unknown',
         }),
       ).toEqual([`ALTER TABLE "table1" ALTER COLUMN "column1" SET DEFAULT uuid_generate_v4();`]);
@@ -121,10 +146,16 @@ describe(transformColumns.name, () => {
       expect(
         transformColumns(ctx, {
           type: 'ColumnAlter',
-          tableName: 'table1',
-          columnName: 'column1',
-          changes: {
-            default: 'NULL',
+          object: {
+            new: {
+              name: 'column1',
+              tableName: 'table1',
+            } as DatabaseColumn,
+            old: {
+              name: 'column1',
+              tableName: 'table1',
+            } as DatabaseColumn,
+            changes: { default: 'NULL' },
           },
           reason: 'unknown',
         }),
@@ -137,8 +168,10 @@ describe(transformColumns.name, () => {
       expect(
         transformColumns(ctx, {
           type: 'ColumnDrop',
-          tableName: 'table1',
-          columnName: 'column1',
+          object: {
+            name: 'column1',
+            tableName: 'table1',
+          } as DatabaseColumn,
           reason: 'unknown',
         }),
       ).toEqual(`ALTER TABLE "table1" DROP COLUMN "column1";`);

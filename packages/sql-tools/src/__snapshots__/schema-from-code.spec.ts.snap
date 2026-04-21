@@ -13,16 +13,10 @@ exports[`schemaFromCode > test files > check-constraint-default-name.stub.ts 1`]
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -31,7 +25,7 @@ exports[`schemaFromCode > test files > check-constraint-default-name.stub.ts 1`]
       "constraints": [
         {
           "expression": "1=1",
-          "name": "CHK_8d2ecfd49b984941f6b2589799",
+          "name": "table1_3985fc33_chk",
           "synchronize": true,
           "tableName": "table1",
           "type": "check",
@@ -60,16 +54,10 @@ exports[`schemaFromCode > test files > check-constraint-override-name.stub.ts 1`
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -107,16 +95,11 @@ exports[`schemaFromCode > test files > column-create-date.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
           "default": "now()",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "createdAt",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "timestamp with time zone",
@@ -146,61 +129,41 @@ exports[`schemaFromCode > test files > column-default-array.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
           "default": "'{}'",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column0",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
         },
         {
-          "comment": undefined,
           "default": "'{a, "b\\"", "", " hello world "}'",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
         },
         {
-          "comment": undefined,
           "default": "'{1, 2, 3}'",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column2",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
         },
         {
-          "comment": undefined,
           "default": "'{NULL}'",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column3",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -230,16 +193,11 @@ exports[`schemaFromCode > test files > column-default-boolean.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
           "default": "true",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "boolean",
@@ -269,16 +227,11 @@ exports[`schemaFromCode > test files > column-default-date.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
           "default": "'2023-01-01T00:00:00.000Z'",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -308,16 +261,11 @@ exports[`schemaFromCode > test files > column-default-function.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
           "default": "now()",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -347,16 +295,10 @@ exports[`schemaFromCode > test files > column-default-null.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": true,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -386,16 +328,11 @@ exports[`schemaFromCode > test files > column-default-number.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
           "default": "0",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "integer",
@@ -425,16 +362,11 @@ exports[`schemaFromCode > test files > column-default-string.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
           "default": "'foo'",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -464,16 +396,10 @@ exports[`schemaFromCode > test files > column-delete-date.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "deletedAt",
           "nullable": true,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "timestamp with time zone",
@@ -512,16 +438,11 @@ exports[`schemaFromCode > test files > column-enum-type.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
           "enumName": "test_enum",
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "enum",
@@ -551,16 +472,11 @@ exports[`schemaFromCode > test files > column-generated-identity.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
           "identity": true,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "integer",
@@ -571,7 +487,7 @@ exports[`schemaFromCode > test files > column-generated-identity.ts 1`] = `
           "columnNames": [
             "column1",
           ],
-          "name": "PK_50c4f9905061b1e506d38a2a380",
+          "name": "table1_pkey",
           "synchronize": true,
           "tableName": "table1",
           "type": "primary-key",
@@ -600,16 +516,11 @@ exports[`schemaFromCode > test files > column-generated-uuid.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
           "default": "uuidv7()",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -620,7 +531,7 @@ exports[`schemaFromCode > test files > column-generated-uuid.stub.ts 1`] = `
           "columnNames": [
             "column1",
           ],
-          "name": "PK_50c4f9905061b1e506d38a2a380",
+          "name": "table1_pkey",
           "synchronize": true,
           "tableName": "table1",
           "type": "primary-key",
@@ -649,16 +560,10 @@ exports[`schemaFromCode > test files > column-index-name.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -699,16 +604,10 @@ exports[`schemaFromCode > test files > column-index-name-default.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -720,7 +619,7 @@ exports[`schemaFromCode > test files > column-index-name-default.ts 1`] = `
           "columnNames": [
             "column1",
           ],
-          "name": "IDX_50c4f9905061b1e506d38a2a38",
+          "name": "table1_column1_idx",
           "override": undefined,
           "synchronize": true,
           "tableName": "table1",
@@ -749,16 +648,10 @@ exports[`schemaFromCode > test files > column-inferred-nullable.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": true,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -788,16 +681,10 @@ exports[`schemaFromCode > test files > column-name-default.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -827,16 +714,10 @@ exports[`schemaFromCode > test files > column-name-override.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column-1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -866,16 +747,10 @@ exports[`schemaFromCode > test files > column-name-string.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column-1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -905,16 +780,10 @@ exports[`schemaFromCode > test files > column-nullable.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": true,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -944,16 +813,11 @@ exports[`schemaFromCode > test files > column-string-length.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
           "length": 2,
           "name": "column1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -983,16 +847,10 @@ exports[`schemaFromCode > test files > column-unique-constraint-name-default.stu
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -1003,7 +861,7 @@ exports[`schemaFromCode > test files > column-unique-constraint-name-default.stu
           "columnNames": [
             "id",
           ],
-          "name": "UQ_b249cc64cf63b8a22557cdc8537",
+          "name": "table1_id_uq",
           "synchronize": true,
           "tableName": "table1",
           "type": "unique",
@@ -1032,16 +890,10 @@ exports[`schemaFromCode > test files > column-unique-constraint-name-override.st
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -1081,16 +933,11 @@ exports[`schemaFromCode > test files > column-update-date.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
           "default": "now()",
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "updatedAt",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "timestamp with time zone",
@@ -1120,16 +967,10 @@ exports[`schemaFromCode > test files > foreign-key-constraint.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -1140,7 +981,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint.stub.ts 1`] = `
           "columnNames": [
             "id",
           ],
-          "name": "PK_b249cc64cf63b8a22557cdc8537",
+          "name": "table1_pkey",
           "synchronize": true,
           "tableName": "table1",
           "type": "primary-key",
@@ -1154,16 +995,10 @@ exports[`schemaFromCode > test files > foreign-key-constraint.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "parentId",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table2",
           "type": "uuid",
@@ -1174,7 +1009,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint.stub.ts 1`] = `
           "columnNames": [
             "parentId",
           ],
-          "name": "FK_3fcca5cc563abf256fc346e3ff4",
+          "name": "table2_parentId_fkey",
           "onDelete": undefined,
           "onUpdate": undefined,
           "referenceColumnNames": [
@@ -1191,7 +1026,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint.stub.ts 1`] = `
           "columnNames": [
             "parentId",
           ],
-          "name": "IDX_3fcca5cc563abf256fc346e3ff",
+          "name": "table2_parentId_idx",
           "override": undefined,
           "synchronize": true,
           "tableName": "table2",
@@ -1220,31 +1055,19 @@ exports[`schemaFromCode > test files > foreign-key-constraint-column-order.stub.
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id1",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
         },
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id2",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -1256,7 +1079,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint-column-order.stub.
             "id1",
             "id2",
           ],
-          "name": "PK_e457e8b1301b7bc06ef78188ee4",
+          "name": "table1_pkey",
           "synchronize": true,
           "tableName": "table1",
           "type": "primary-key",
@@ -1270,31 +1093,19 @@ exports[`schemaFromCode > test files > foreign-key-constraint-column-order.stub.
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "parentId1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table2",
           "type": "uuid",
         },
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "parentId2",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table2",
           "type": "uuid",
@@ -1306,7 +1117,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint-column-order.stub.
             "parentId1",
             "parentId2",
           ],
-          "name": "FK_aed36d04470eba20161aa8b1dc6",
+          "name": "table2_parentId1_parentId2_fkey",
           "onDelete": undefined,
           "onUpdate": undefined,
           "referenceColumnNames": [
@@ -1325,7 +1136,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint-column-order.stub.
             "parentId1",
             "parentId2",
           ],
-          "name": "IDX_aed36d04470eba20161aa8b1dc",
+          "name": "table2_parentId1_parentId2_idx",
           "override": undefined,
           "synchronize": true,
           "tableName": "table2",
@@ -1354,31 +1165,19 @@ exports[`schemaFromCode > test files > foreign-key-constraint-multiple-columns.s
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id1",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
         },
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id2",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -1390,7 +1189,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint-multiple-columns.s
             "id1",
             "id2",
           ],
-          "name": "PK_e457e8b1301b7bc06ef78188ee4",
+          "name": "table1_pkey",
           "synchronize": true,
           "tableName": "table1",
           "type": "primary-key",
@@ -1404,31 +1203,19 @@ exports[`schemaFromCode > test files > foreign-key-constraint-multiple-columns.s
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "parentId1",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table2",
           "type": "uuid",
         },
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "parentId2",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table2",
           "type": "uuid",
@@ -1440,7 +1227,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint-multiple-columns.s
             "parentId1",
             "parentId2",
           ],
-          "name": "FK_aed36d04470eba20161aa8b1dc6",
+          "name": "table2_parentId1_parentId2_fkey",
           "onDelete": undefined,
           "onUpdate": undefined,
           "referenceColumnNames": [
@@ -1459,7 +1246,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint-multiple-columns.s
             "parentId1",
             "parentId2",
           ],
-          "name": "IDX_aed36d04470eba20161aa8b1dc",
+          "name": "table2_parentId1_parentId2_idx",
           "override": undefined,
           "synchronize": true,
           "tableName": "table2",
@@ -1467,6 +1254,184 @@ exports[`schemaFromCode > test files > foreign-key-constraint-multiple-columns.s
         },
       ],
       "name": "table2",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > foreign-key-constraint-multiple-columns-index.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "isArray": false,
+          "name": "id",
+          "nullable": false,
+          "primary": true,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "table1_pkey",
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+    {
+      "columns": [
+        {
+          "isArray": false,
+          "name": "id",
+          "nullable": false,
+          "primary": true,
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "table2_pkey",
+          "synchronize": true,
+          "tableName": "table2",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [],
+      "name": "table2",
+      "synchronize": true,
+      "triggers": [],
+    },
+    {
+      "columns": [
+        {
+          "isArray": false,
+          "name": "id",
+          "nullable": false,
+          "primary": true,
+          "synchronize": true,
+          "tableName": "table3",
+          "type": "uuid",
+        },
+        {
+          "isArray": false,
+          "name": "table1Id",
+          "nullable": false,
+          "primary": false,
+          "synchronize": true,
+          "tableName": "table3",
+          "type": "uuid",
+        },
+        {
+          "isArray": false,
+          "name": "table2Id",
+          "nullable": false,
+          "primary": false,
+          "synchronize": true,
+          "tableName": "table3",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "table1Id",
+          ],
+          "name": "table3_table1Id_fkey",
+          "onDelete": undefined,
+          "onUpdate": undefined,
+          "referenceColumnNames": [
+            "id",
+          ],
+          "referenceTableName": "table1",
+          "synchronize": true,
+          "tableName": "table3",
+          "type": "foreign-key",
+        },
+        {
+          "columnNames": [
+            "table2Id",
+          ],
+          "name": "table3_table2Id_fkey",
+          "onDelete": undefined,
+          "onUpdate": undefined,
+          "referenceColumnNames": [
+            "id",
+          ],
+          "referenceTableName": "table2",
+          "synchronize": true,
+          "tableName": "table3",
+          "type": "foreign-key",
+        },
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "table3_pkey",
+          "synchronize": true,
+          "tableName": "table3",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [
+        {
+          "columnNames": [
+            "table2Id",
+            "table1Id",
+          ],
+          "expression": undefined,
+          "name": "table3_table2Id_table1Id_idx",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table3",
+          "unique": false,
+          "using": undefined,
+          "where": undefined,
+          "with": undefined,
+        },
+        {
+          "columnNames": [
+            "table1Id",
+            "table2Id",
+          ],
+          "expression": undefined,
+          "name": "table3_table1Id_table2Id_idx",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "table3",
+          "unique": false,
+          "using": undefined,
+          "where": undefined,
+          "with": undefined,
+        },
+      ],
+      "name": "table3",
       "synchronize": true,
       "triggers": [],
     },
@@ -1488,16 +1453,10 @@ exports[`schemaFromCode > test files > foreign-key-constraint-no-index.stub.ts 1
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -1508,7 +1467,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint-no-index.stub.ts 1
           "columnNames": [
             "id",
           ],
-          "name": "PK_b249cc64cf63b8a22557cdc8537",
+          "name": "table1_pkey",
           "synchronize": true,
           "tableName": "table1",
           "type": "primary-key",
@@ -1522,16 +1481,10 @@ exports[`schemaFromCode > test files > foreign-key-constraint-no-index.stub.ts 1
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "parentId",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table2",
           "type": "uuid",
@@ -1542,7 +1495,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint-no-index.stub.ts 1
           "columnNames": [
             "parentId",
           ],
-          "name": "FK_3fcca5cc563abf256fc346e3ff4",
+          "name": "table2_parentId_fkey",
           "onDelete": undefined,
           "onUpdate": undefined,
           "referenceColumnNames": [
@@ -1577,16 +1530,10 @@ exports[`schemaFromCode > test files > foreign-key-constraint-no-primary.stub.ts
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "foo",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -1597,7 +1544,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint-no-primary.stub.ts
           "columnNames": [
             "foo",
           ],
-          "name": "UQ_6b68eb623b528278ad78f99c208",
+          "name": "table1_foo_uq",
           "synchronize": true,
           "tableName": "table1",
           "type": "unique",
@@ -1611,16 +1558,10 @@ exports[`schemaFromCode > test files > foreign-key-constraint-no-primary.stub.ts
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "bar",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table2",
           "type": "character varying",
@@ -1631,7 +1572,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint-no-primary.stub.ts
           "columnNames": [
             "bar",
           ],
-          "name": "FK_7d9c784c98d12365d198d52e4e6",
+          "name": "table2_bar_fkey",
           "onDelete": undefined,
           "onUpdate": undefined,
           "referenceColumnNames": [
@@ -1648,7 +1589,7 @@ exports[`schemaFromCode > test files > foreign-key-constraint-no-primary.stub.ts
           "columnNames": [
             "bar",
           ],
-          "name": "IDX_7d9c784c98d12365d198d52e4e",
+          "name": "table2_bar_idx",
           "override": undefined,
           "synchronize": true,
           "tableName": "table2",
@@ -1677,16 +1618,10 @@ exports[`schemaFromCode > test files > foreign-key-inferred-type.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -1697,7 +1632,7 @@ exports[`schemaFromCode > test files > foreign-key-inferred-type.stub.ts 1`] = `
           "columnNames": [
             "id",
           ],
-          "name": "PK_b249cc64cf63b8a22557cdc8537",
+          "name": "table1_pkey",
           "synchronize": true,
           "tableName": "table1",
           "type": "primary-key",
@@ -1711,16 +1646,10 @@ exports[`schemaFromCode > test files > foreign-key-inferred-type.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "parentId",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table2",
           "type": "uuid",
@@ -1731,7 +1660,7 @@ exports[`schemaFromCode > test files > foreign-key-inferred-type.stub.ts 1`] = `
           "columnNames": [
             "parentId",
           ],
-          "name": "FK_3fcca5cc563abf256fc346e3ff4",
+          "name": "table2_parentId_fkey",
           "onDelete": undefined,
           "onUpdate": undefined,
           "referenceColumnNames": [
@@ -1748,7 +1677,7 @@ exports[`schemaFromCode > test files > foreign-key-inferred-type.stub.ts 1`] = `
           "columnNames": [
             "parentId",
           ],
-          "name": "IDX_3fcca5cc563abf256fc346e3ff",
+          "name": "table2_parentId_idx",
           "override": undefined,
           "synchronize": true,
           "tableName": "table2",
@@ -1777,16 +1706,10 @@ exports[`schemaFromCode > test files > foreign-key-with-unique-constraint.stub.t
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -1797,7 +1720,7 @@ exports[`schemaFromCode > test files > foreign-key-with-unique-constraint.stub.t
           "columnNames": [
             "id",
           ],
-          "name": "PK_b249cc64cf63b8a22557cdc8537",
+          "name": "table1_pkey",
           "synchronize": true,
           "tableName": "table1",
           "type": "primary-key",
@@ -1811,16 +1734,10 @@ exports[`schemaFromCode > test files > foreign-key-with-unique-constraint.stub.t
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "parentId",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table2",
           "type": "uuid",
@@ -1831,7 +1748,7 @@ exports[`schemaFromCode > test files > foreign-key-with-unique-constraint.stub.t
           "columnNames": [
             "parentId",
           ],
-          "name": "FK_3fcca5cc563abf256fc346e3ff4",
+          "name": "table2_parentId_fkey",
           "onDelete": undefined,
           "onUpdate": undefined,
           "referenceColumnNames": [
@@ -1846,7 +1763,7 @@ exports[`schemaFromCode > test files > foreign-key-with-unique-constraint.stub.t
           "columnNames": [
             "parentId",
           ],
-          "name": "UQ_3fcca5cc563abf256fc346e3ff4",
+          "name": "table2_parentId_uq",
           "synchronize": true,
           "tableName": "table2",
           "type": "unique",
@@ -1857,7 +1774,7 @@ exports[`schemaFromCode > test files > foreign-key-with-unique-constraint.stub.t
           "columnNames": [
             "parentId",
           ],
-          "name": "IDX_3fcca5cc563abf256fc346e3ff",
+          "name": "table2_parentId_idx",
           "override": undefined,
           "synchronize": true,
           "tableName": "table2",
@@ -1886,16 +1803,10 @@ exports[`schemaFromCode > test files > index-name-default.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -1908,7 +1819,7 @@ exports[`schemaFromCode > test files > index-name-default.stub.ts 1`] = `
             "id",
           ],
           "expression": undefined,
-          "name": "IDX_b249cc64cf63b8a22557cdc853",
+          "name": "table1_id_idx",
           "override": undefined,
           "synchronize": true,
           "tableName": "table1",
@@ -1940,16 +1851,10 @@ exports[`schemaFromCode > test files > index-name-override.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -1994,16 +1899,10 @@ exports[`schemaFromCode > test files > index-with-expression.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": true,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "timestamp with time zone",
@@ -2014,7 +1913,7 @@ exports[`schemaFromCode > test files > index-with-expression.stub.ts 1`] = `
         {
           "columnNames": undefined,
           "expression": "(("column1" at time zone 'UTC')::date)",
-          "name": "IDX_376788d186160c4faa5aaaef63",
+          "name": "table1_da39a3ee_idx",
           "override": undefined,
           "synchronize": true,
           "tableName": "table1",
@@ -2046,16 +1945,10 @@ exports[`schemaFromCode > test files > index-with-where.stub.ts 1`] = `
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "column1",
           "nullable": true,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "character varying",
@@ -2068,7 +1961,7 @@ exports[`schemaFromCode > test files > index-with-where.stub.ts 1`] = `
             "column1",
           ],
           "expression": undefined,
-          "name": "IDX_9d55433a12bca5728dd25d5db0",
+          "name": "table1_column1_idx",
           "override": undefined,
           "synchronize": true,
           "tableName": "table1",
@@ -2100,16 +1993,10 @@ exports[`schemaFromCode > test files > primary-key-constraint-name-default.stub.
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -2120,7 +2007,7 @@ exports[`schemaFromCode > test files > primary-key-constraint-name-default.stub.
           "columnNames": [
             "id",
           ],
-          "name": "PK_b249cc64cf63b8a22557cdc8537",
+          "name": "table1_pkey",
           "synchronize": true,
           "tableName": "table1",
           "type": "primary-key",
@@ -2149,16 +2036,10 @@ exports[`schemaFromCode > test files > primary-key-constraint-name-override.stub
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": true,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -2246,6 +2127,148 @@ exports[`schemaFromCode > test files > table-name-string-option.stub.ts 1`] = `
       "constraints": [],
       "indexes": [],
       "name": "table-1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
+exports[`schemaFromCode > test files > table-recursive-dependency.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "isArray": false,
+          "name": "id",
+          "nullable": false,
+          "primary": true,
+          "synchronize": true,
+          "tableName": "stack",
+          "type": "uuid",
+        },
+        {
+          "isArray": false,
+          "name": "primaryAssetId",
+          "nullable": false,
+          "primary": false,
+          "synchronize": true,
+          "tableName": "stack",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "primaryAssetId",
+          ],
+          "deferred": true,
+          "name": "stack_primaryAssetId_fkey",
+          "onDelete": undefined,
+          "onUpdate": undefined,
+          "referenceColumnNames": [
+            "id",
+          ],
+          "referenceTableName": "asset",
+          "synchronize": true,
+          "tableName": "stack",
+          "type": "foreign-key",
+        },
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "stack_pkey",
+          "synchronize": true,
+          "tableName": "stack",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [
+        {
+          "columnNames": [
+            "primaryAssetId",
+          ],
+          "name": "stack_primaryAssetId_idx",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "stack",
+          "unique": false,
+        },
+      ],
+      "name": "stack",
+      "synchronize": true,
+      "triggers": [],
+    },
+    {
+      "columns": [
+        {
+          "isArray": false,
+          "name": "id",
+          "nullable": false,
+          "primary": true,
+          "synchronize": true,
+          "tableName": "asset",
+          "type": "uuid",
+        },
+        {
+          "isArray": false,
+          "name": "stackId",
+          "nullable": false,
+          "primary": false,
+          "synchronize": true,
+          "tableName": "asset",
+          "type": "uuid",
+        },
+      ],
+      "constraints": [
+        {
+          "columnNames": [
+            "stackId",
+          ],
+          "name": "asset_stackId_fkey",
+          "onDelete": undefined,
+          "onUpdate": undefined,
+          "referenceColumnNames": [
+            "id",
+          ],
+          "referenceTableName": "stack",
+          "synchronize": true,
+          "tableName": "asset",
+          "type": "foreign-key",
+        },
+        {
+          "columnNames": [
+            "id",
+          ],
+          "name": "asset_pkey",
+          "synchronize": true,
+          "tableName": "asset",
+          "type": "primary-key",
+        },
+      ],
+      "indexes": [
+        {
+          "columnNames": [
+            "stackId",
+          ],
+          "name": "asset_stackId_idx",
+          "override": undefined,
+          "synchronize": true,
+          "tableName": "asset",
+          "unique": false,
+        },
+      ],
+      "name": "asset",
       "synchronize": true,
       "triggers": [],
     },
@@ -2399,7 +2422,7 @@ exports[`schemaFromCode > test files > trigger-name-default.stub.ts 1`] = `
             "insert",
           ],
           "functionName": "test_fn",
-          "name": "TR_d3d780ebda61882ac0b03b33dbd",
+          "name": "table1_test_fn",
           "override": undefined,
           "referencingNewTableAs": undefined,
           "referencingOldTableAs": undefined,
@@ -2483,16 +2506,10 @@ exports[`schemaFromCode > test files > unique-constraint-name-default.stub.ts 1`
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",
@@ -2503,7 +2520,7 @@ exports[`schemaFromCode > test files > unique-constraint-name-default.stub.ts 1`
           "columnNames": [
             "id",
           ],
-          "name": "UQ_b249cc64cf63b8a22557cdc8537",
+          "name": "table1_id_uq",
           "synchronize": true,
           "tableName": "table1",
           "type": "unique",
@@ -2532,16 +2549,10 @@ exports[`schemaFromCode > test files > unique-constraint-name-override.stub.ts 1
     {
       "columns": [
         {
-          "comment": undefined,
-          "default": undefined,
-          "enumName": undefined,
-          "identity": undefined,
           "isArray": false,
-          "length": undefined,
           "name": "id",
           "nullable": false,
           "primary": false,
-          "storage": undefined,
           "synchronize": true,
           "tableName": "table1",
           "type": "uuid",

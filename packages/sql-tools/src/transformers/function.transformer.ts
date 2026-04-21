@@ -1,14 +1,14 @@
 import { SqlTransformer } from 'src/transformers/types';
 import { DatabaseFunction } from 'src/types';
 
-export const transformFunctions: SqlTransformer = (ctx, item) => {
-  switch (item.type) {
+export const transformFunctions: SqlTransformer = (ctx, { object, type }) => {
+  switch (type) {
     case 'FunctionCreate': {
-      return asFunctionCreate(item.function);
+      return asFunctionCreate(object);
     }
 
     case 'FunctionDrop': {
-      return asFunctionDrop(item.functionName);
+      return asFunctionDrop(object.name);
     }
 
     default: {

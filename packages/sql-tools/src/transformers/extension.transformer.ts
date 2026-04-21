@@ -1,14 +1,14 @@
 import { SqlTransformer } from 'src/transformers/types';
 import { DatabaseExtension } from 'src/types';
 
-export const transformExtensions: SqlTransformer = (ctx, item) => {
-  switch (item.type) {
+export const transformExtensions: SqlTransformer = (ctx, { object, type }) => {
+  switch (type) {
     case 'ExtensionCreate': {
-      return asExtensionCreate(item.extension);
+      return asExtensionCreate(object);
     }
 
     case 'ExtensionDrop': {
-      return asExtensionDrop(item.extensionName);
+      return asExtensionDrop(object.name);
     }
 
     default: {

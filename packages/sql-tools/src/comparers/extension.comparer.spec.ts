@@ -9,8 +9,8 @@ describe('compareExtensions', () => {
     it('should work', () => {
       expect(compareExtensions().onExtra(testExtension)).toEqual([
         {
-          extensionName: 'test',
           type: 'ExtensionDrop',
+          object: testExtension,
           reason: Reason.MissingInSource,
         },
       ]);
@@ -22,7 +22,7 @@ describe('compareExtensions', () => {
       expect(compareExtensions().onMissing(testExtension)).toEqual([
         {
           type: 'ExtensionCreate',
-          extension: testExtension,
+          object: testExtension,
           reason: Reason.MissingInTarget,
         },
       ]);

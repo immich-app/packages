@@ -16,8 +16,7 @@ describe('compareConstraints', () => {
       expect(compareConstraints().onExtra(testConstraint)).toEqual([
         {
           type: 'ConstraintDrop',
-          constraintName: 'test',
-          tableName: 'table1',
+          object: testConstraint,
           reason: Reason.MissingInSource,
         },
       ]);
@@ -29,7 +28,7 @@ describe('compareConstraints', () => {
       expect(compareConstraints().onMissing(testConstraint)).toEqual([
         {
           type: 'ConstraintAdd',
-          constraint: testConstraint,
+          object: testConstraint,
           reason: Reason.MissingInTarget,
         },
       ]);
@@ -46,17 +45,8 @@ describe('compareConstraints', () => {
       const target: DatabaseConstraint = { ...testConstraint, columnNames: ['column1', 'column2'] };
       const reason = 'Primary key columns are different: (column1 vs column1,column2)';
       expect(compareConstraints().onCompare(source, target)).toEqual([
-        {
-          constraintName: 'test',
-          tableName: 'table1',
-          type: 'ConstraintDrop',
-          reason,
-        },
-        {
-          type: 'ConstraintAdd',
-          constraint: source,
-          reason,
-        },
+        { type: 'ConstraintDrop', object: target, reason },
+        { type: 'ConstraintAdd', object: source, reason },
       ]);
     });
   });

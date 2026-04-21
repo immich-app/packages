@@ -2,18 +2,18 @@ import { asColumnList } from 'src/helpers';
 import { SqlTransformer } from 'src/transformers/types';
 import { ActionType, ConstraintType, DatabaseConstraint } from 'src/types';
 
-export const transformConstraints: SqlTransformer = (ctx, item) => {
-  switch (item.type) {
+export const transformConstraints: SqlTransformer = (ctx, { object, type }) => {
+  switch (type) {
     case 'ConstraintAdd': {
-      return `ALTER TABLE "${item.constraint.tableName}" ADD ${asConstraintBody(item.constraint)};`;
+      return `ALTER TABLE "${object.tableName}" ADD ${asConstraintBody(object)};`;
     }
 
     case 'ConstraintRename': {
-      return `ALTER TABLE "${item.tableName}" RENAME CONSTRAINT "${item.oldName}" TO "${item.newName}";`;
+      return `ALTER TABLE "${object.new.tableName}" RENAME CONSTRAINT "${object.old.name}" TO "${object.new.name}";`;
     }
 
     case 'ConstraintDrop': {
-      return `ALTER TABLE "${item.tableName}" DROP CONSTRAINT "${item.constraintName}";`;
+      return `ALTER TABLE "${object.tableName}" DROP CONSTRAINT "${object.name}";`;
     }
     default: {
       return false;

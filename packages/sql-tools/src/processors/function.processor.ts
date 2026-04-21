@@ -5,8 +5,8 @@ export const processFunctions: Processor = (ctx, items) => {
     return;
   }
 
-  for (const { item } of items.filter((item) => item.type === 'function')) {
+  for (const result of items.filter((item) => item.type === 'function')) {
     // TODO log warnings if function name is not unique
-    ctx.functions.push(item);
+    ctx.functions.push(result.item);
   }
 };
