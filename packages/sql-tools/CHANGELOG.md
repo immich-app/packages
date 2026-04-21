@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0](https://github.com/immich-app/packages/compare/sql-tools-v0.4.2...sql-tools-v0.5.0) (2026-04-21)
+
+
+### Features
+
+* dependency tracking ([#73](https://github.com/immich-app/packages/issues/73)) ([e779ff8](https://github.com/immich-app/packages/commit/e779ff8d1620310c158e6a4a11c2627f3bfc40f4))
+* **sql-tools:** add char and smallint types ([#74](https://github.com/immich-app/packages/issues/74)) ([2998a6c](https://github.com/immich-app/packages/commit/2998a6c4bca4547893fdb678212b3aeabe54752c))
+
+
+### Bug Fixes
+
+* bugs ([e779ff8](https://github.com/immich-app/packages/commit/e779ff8d1620310c158e6a4a11c2627f3bfc40f4))
+
 ## [0.4.2](https://github.com/immich-app/packages/compare/sql-tools-v0.4.1...sql-tools-v0.4.2) (2026-04-02)
 
 
