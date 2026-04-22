@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/immich-app/packages/compare/sql-tools-v0.5.1...sql-tools-v0.5.2) (2026-04-22)
+
+
+### Bug Fixes
+
+* **sql-tools:** enum arrays ([#82](https://github.com/immich-app/packages/issues/82)) ([346f7a7](https://github.com/immich-app/packages/commit/346f7a78afd20c4f0b769a5d2e0ee0cc105b2142))
+
 ## [0.5.1](https://github.com/immich-app/packages/compare/sql-tools-v0.5.0...sql-tools-v0.5.1) (2026-04-21)
 
 
