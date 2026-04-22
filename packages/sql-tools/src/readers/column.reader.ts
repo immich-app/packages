@@ -98,6 +98,26 @@ export const readColumns: Reader = async (ctx, db) => {
           ctx.warnings.push(`Unable to find type for ${columnLabel} (ARRAY)`);
           continue;
         }
+
+        if (column.array_type === 'USER-DEFINED') {
+          let enumName = column.udt_name;
+
+          // postgres prepends an underscore for array types
+          // https://www.postgresql.org/docs/current/xtypes.html#:~:text=double%20%29%3B-,When,prepended
+          if (enumName.startsWith('_')) {
+            enumName = enumName.slice(1);
+          }
+
+          if (!enumMap[enumName]) {
+            ctx.warnings.push(`Unable to find type for ${columnLabel} (ENUM)`);
+            continue;
+          }
+
+          item.type = 'enum';
+          item.enumName = enumName;
+          break;
+        }
+
         item.type = column.array_type as ColumnType;
         break;
       }

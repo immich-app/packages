@@ -29,8 +29,8 @@ exports[`fixtures > column-create-date.stub.ts 2`] = `"DROP TABLE "table1";"`;
 exports[`fixtures > column-default-array.stub.ts 1`] = `
 "CREATE TABLE "table1" (
   "column0" character varying NOT NULL DEFAULT '{}',
-  "column1" character varying NOT NULL DEFAULT '{a, "b\\"", "", " hello world "}',
-  "column2" character varying NOT NULL DEFAULT '{1, 2, 3}',
+  "column1" character varying NOT NULL DEFAULT '{a,"b\\"",""," hello world "}',
+  "column2" character varying NOT NULL DEFAULT '{1,2,3}',
   "column3" character varying NOT NULL DEFAULT '{NULL}'
 );"
 `;
@@ -93,10 +93,25 @@ exports[`fixtures > column-delete-date.stub.ts 1`] = `
 
 exports[`fixtures > column-delete-date.stub.ts 2`] = `"DROP TABLE "table1";"`;
 
+exports[`fixtures > column-enum-array.stub.ts 1`] = `
+"CREATE TYPE "test_enum" AS ENUM ('a','b');
+CREATE TABLE "table1" (
+  "column1" test_enum[] NOT NULL,
+  "column2" test_enum[] NOT NULL DEFAULT '{a}',
+  "column3" test_enum[] NOT NULL DEFAULT '{a,b}'
+);"
+`;
+
+exports[`fixtures > column-enum-array.stub.ts 2`] = `
+"DROP TABLE "table1";
+DROP TYPE "test_enum";"
+`;
+
 exports[`fixtures > column-enum-type.stub.ts 1`] = `
 "CREATE TYPE "test_enum" AS ENUM ('foo','bar');
 CREATE TABLE "table1" (
-  "column1" test_enum NOT NULL
+  "column1" test_enum NOT NULL,
+  "column2" test_enum NOT NULL DEFAULT 'foo'
 );"
 `;
 

@@ -139,7 +139,7 @@ exports[`schemaFromCode > test files > column-default-array.stub.ts 1`] = `
           "type": "character varying",
         },
         {
-          "default": "'{a, "b\\"", "", " hello world "}'",
+          "default": "'{a,"b\\"",""," hello world "}'",
           "isArray": false,
           "name": "column1",
           "nullable": false,
@@ -149,7 +149,7 @@ exports[`schemaFromCode > test files > column-default-array.stub.ts 1`] = `
           "type": "character varying",
         },
         {
-          "default": "'{1, 2, 3}'",
+          "default": "'{1,2,3}'",
           "isArray": false,
           "name": "column2",
           "nullable": false,
@@ -416,6 +416,71 @@ exports[`schemaFromCode > test files > column-delete-date.stub.ts 1`] = `
 }
 `;
 
+exports[`schemaFromCode > test files > column-enum-array.stub.ts 1`] = `
+{
+  "databaseName": "postgres",
+  "enums": [
+    {
+      "name": "test_enum",
+      "synchronize": true,
+      "values": [
+        "a",
+        "b",
+      ],
+    },
+  ],
+  "extensions": [],
+  "functions": [],
+  "overrides": [],
+  "parameters": [],
+  "schemaName": "public",
+  "tables": [
+    {
+      "columns": [
+        {
+          "enumName": "test_enum",
+          "isArray": true,
+          "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "enum",
+        },
+        {
+          "default": "'{a}'",
+          "enumName": "test_enum",
+          "isArray": true,
+          "name": "column2",
+          "nullable": false,
+          "primary": false,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "enum",
+        },
+        {
+          "default": "'{a,b}'",
+          "enumName": "test_enum",
+          "isArray": true,
+          "name": "column3",
+          "nullable": false,
+          "primary": false,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "enum",
+        },
+      ],
+      "constraints": [],
+      "indexes": [],
+      "name": "table1",
+      "synchronize": true,
+      "triggers": [],
+    },
+  ],
+  "warnings": [],
+}
+`;
+
 exports[`schemaFromCode > test files > column-enum-type.stub.ts 1`] = `
 {
   "databaseName": "postgres",
@@ -441,6 +506,17 @@ exports[`schemaFromCode > test files > column-enum-type.stub.ts 1`] = `
           "enumName": "test_enum",
           "isArray": false,
           "name": "column1",
+          "nullable": false,
+          "primary": false,
+          "synchronize": true,
+          "tableName": "table1",
+          "type": "enum",
+        },
+        {
+          "default": "'foo'",
+          "enumName": "test_enum",
+          "isArray": false,
+          "name": "column2",
           "nullable": false,
           "primary": false,
           "synchronize": true,

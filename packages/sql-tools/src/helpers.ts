@@ -82,7 +82,7 @@ export const fromColumnValue = (columnValue?: ColumnValue): string | undefined |
   }
 
   if (Array.isArray(value)) {
-    return `'{${value.map((entry) => (Array.isArray(entry) ? fromColumnValue(entry)?.slice(1, -1) : escapeArrayValue(entry))).join(', ')}}'`;
+    return `'{${value.map((entry) => (Array.isArray(entry) ? fromColumnValue(entry)?.slice(1, -1) : escapeArrayValue(entry))).join(',')}}'`;
   }
 
   return `'${String(value)}'`;
