@@ -137,5 +137,9 @@ export class SvelteMarkdownPreprocess {
 }
 
 export const svelteMarkdownPreprocess = (options?: SvelteMarkdownPreprocessOptions) => {
-  return new SvelteMarkdownPreprocess(options) satisfies PreprocessorGroup;
+  const plugin = new SvelteMarkdownPreprocess(options);
+  return {
+    name: plugin.name,
+    markup: (item) => plugin.markup(item),
+  } satisfies PreprocessorGroup;
 };
