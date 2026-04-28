@@ -1,5 +1,5 @@
 import fm from 'front-matter';
-import { marked } from 'marked';
+import { Marked } from 'marked';
 import type { PreprocessorGroup } from 'svelte/compiler';
 import { markedSvelte } from './marked-svelte.js';
 
@@ -36,15 +36,15 @@ export class SvelteMarkdownPreprocess {
 
   #extensions: string[];
   #layouts: SvelteMarkdownPreprocessLayouts;
-  #md: typeof marked;
+  #md: Marked;
 
   constructor(options?: SvelteMarkdownPreprocessOptions) {
     this.#extensions = options?.extensions ?? ['.md', '.mdx'];
     this.#layouts = options?.layouts ?? {};
-    this.#md = this.configure(marked);
+    this.#md = this.configure(new Marked());
   }
 
-  configure(md: typeof marked) {
+  configure(md: Marked) {
     return md.use(markedSvelte());
   }
 

@@ -1,5 +1,64 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`markup > should render 'admonition.md' correctly 1`] = `
+{
+  "code": "<script>
+  import { Markdown } from '@immich/ui';
+</script>
+<Markdown.Alert variant="note"><Markdown.Paragraph>Useful information that users should know.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Alert variant="tip"><Markdown.Paragraph>Helpful advice for doing things better.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Alert variant="important"><Markdown.Paragraph>Key information users need to know.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Alert variant="warning" title="Heads up"><Markdown.Paragraph>A custom title can follow the variant on the opening line.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Alert variant="caution"><Markdown.Paragraph>Risky action ahead.</Markdown.Paragraph>
+<Markdown.Space />
+<Markdown.Paragraph>Body can span multiple paragraphs.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Alert variant="info"><Markdown.Paragraph>Extra variant beyond GFM.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Alert variant="success"><Markdown.Paragraph>The operation completed successfully.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Alert variant="danger" title="Heads up"><Markdown.Paragraph>Destructive action ahead.</Markdown.Paragraph>
+</Markdown.Alert>
+",
+}
+`;
+
+exports[`markup > should render 'alert.md' correctly 1`] = `
+{
+  "code": "<script>
+  import { Markdown } from '@immich/ui';
+</script>
+<Markdown.Alert variant="note"><Markdown.Paragraph>Useful information that users should know, even when skimming content.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Space />
+<Markdown.Alert variant="tip"><Markdown.Paragraph>Helpful advice for doing things better or more easily.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Space />
+<Markdown.Alert variant="important"><Markdown.Paragraph>Key information users need to know to achieve their goal.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Space />
+<Markdown.Alert variant="warning"><Markdown.Paragraph>Urgent info that needs immediate user attention to avoid problems.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Space />
+<Markdown.Alert variant="caution"><Markdown.Paragraph>Advises about risks or negative outcomes of certain actions.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Space />
+<Markdown.Alert variant="info"><Markdown.Paragraph>Extra variant beyond GFM.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Space />
+<Markdown.Alert variant="success"><Markdown.Paragraph>The operation completed successfully.</Markdown.Paragraph>
+</Markdown.Alert>
+<Markdown.Space />
+<Markdown.Alert variant="danger"><Markdown.Paragraph>Destructive action ahead.</Markdown.Paragraph>
+</Markdown.Alert>
+",
+}
+`;
+
 exports[`markup > should render 'code-block.md' correctly 1`] = `
 {
   "code": "<script>
