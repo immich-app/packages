@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0](https://github.com/immich-app/packages/compare/svelte-markdown-preprocess-v0.4.1...svelte-markdown-preprocess-v0.5.0) (2026-04-28)
+
+
+### Features
+
+* markdown alerts ([#86](https://github.com/immich-app/packages/issues/86)) ([c543b75](https://github.com/immich-app/packages/commit/c543b75dd8d32657df492b1377402d835bf11e16))
+* preprocess overhaul ([#67](https://github.com/immich-app/packages/issues/67)) ([a0a2ac7](https://github.com/immich-app/packages/commit/a0a2ac7a3e739ed64800cfb1ff86928535d87590))
+
+
+### Bug Fixes
+
+* **deps:** update dependency marked to v18 ([#71](https://github.com/immich-app/packages/issues/71)) ([37d8c58](https://github.com/immich-app/packages/commit/37d8c586bd086be88ef0ef749388fedea039d305))
+
 ## [0.4.1](https://github.com/immich-app/packages/compare/svelte-markdown-preprocess-v0.4.0...svelte-markdown-preprocess-v0.4.1) (2026-04-07)
 
 
